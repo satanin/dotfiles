@@ -1,5 +1,5 @@
 ###############################################################################
-# ALIASES                                                                     #
+# ALIASES
 ###############################################################################
 # git aliases
 alias gs='git status'
@@ -16,7 +16,7 @@ alias ggpull='git pull --rebase origin $(git_current_branch)'
 alias ggpush='git push origin $(git_current_branch)'
 
 ###############################################################################
-# HELPERS.                                                                    #
+# HELPERS.
 ###############################################################################
 
 function git_current_branch() {

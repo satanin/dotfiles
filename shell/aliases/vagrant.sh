@@ -1,4 +1,6 @@
+###############################################################################
 # vagrant aliases
+###############################################################################
 alias vgs='vagrant global-status'
 alias vpr='vagrant provision'
 alias vu='vagrant up'
