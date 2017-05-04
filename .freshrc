@@ -24,11 +24,13 @@ fresh-options
 # fresh bashrc
 fresh-options --file=~/.bashrc --marker=#
   fresh shell/bashrc/\*
-  fresh shell/completions/\*
 fresh-options
 
 # fresh bash_profile
 fresh shell/bash_profile.sh --file=~/.bash_profile
+
+# fresh git completion
+fresh shell/completions/git-completion.bash --file=~/.git-completion
 
 # fresh files from fresh site
 fresh foobacca/dotfiles bash/completion
