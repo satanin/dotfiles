@@ -1,6 +1,6 @@
 # Load aliases from bash_aliases if exists
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 # If not running interactively, don't do anything
