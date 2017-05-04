@@ -2,6 +2,7 @@
 # ALIASES
 ###############################################################################
 # git aliases
+alias ga='git add'
 alias gs='git status'
 alias gsh='git show'
 alias gb='git branch'
