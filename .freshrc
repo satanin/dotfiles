@@ -16,6 +16,8 @@ fresh freshshell/fresh bin/fresh --bin
 
 # fresh gitconfig --file
 
+fresh shell/\*
+
 # fresh aliases
 fresh-options --file=~/.bash_aliases --marker=#
   fresh shell/aliases/\*
@@ -30,7 +32,7 @@ fresh-options
 fresh shell/bash_profile.sh --file=~/.bash_profile
 
 # fresh git completion
-fresh shell/completions/git-completion.bash --file=~/.git-completion
+fresh shell/completions/git-completion.bash --file=~/.git-completion.bash
 
 # fresh files from fresh site
 fresh foobacca/dotfiles bash/completion
