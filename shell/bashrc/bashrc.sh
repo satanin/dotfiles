@@ -4,8 +4,8 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
+if [ -f ~/.git-completion.sh ]; then
+    source ~/.git-completion.sh
 fi
 
 # If not running interactively, don't do anything
