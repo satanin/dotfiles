@@ -1,13 +1,3 @@
-# Load aliases from bash_aliases if exists
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
-if [ -f ~/.git-completion.sh ]; then
-    source ~/.git-completion.sh
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
