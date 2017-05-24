@@ -5,8 +5,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-Style/DotPosition:
-  EnforcedStyle: trailing
 # Offense count: 2
 Lint/AmbiguousOperator:
   Enabled: true
@@ -20,6 +18,32 @@ Lint/AssignmentInCondition:
 # Cop supports --auto-correct.
 Lint/UnusedMethodArgument:
   Enabled: true
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - '**/spec/*'
+
+# Offense count: 30
+# Configuration parameters: AllowURI.
+Metrics/LineLength:
+  Max: 458
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 11
+
+
+Metrics/ModuleLength:
+  Enabled: false
+
+
+Metrics/PerceivedComplexity:
+  Enabled: false
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -45,16 +69,18 @@ Style/AlignParameters:
   #       b)
   EnforcedStyle: with_fixed_indentation
 
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/AndOr:
   Enabled: true
+  EnforcedStyle: conditionals
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/BracesAroundHashParameters:
   Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
 
 # Offense count: 1
 Style/ClassVars:
@@ -72,6 +98,9 @@ Style/CollectionMethods:
 # Offense count: 19
 Style/Documentation:
   Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: trailing
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -92,6 +121,7 @@ Style/EmptyLinesAroundModuleBody:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/Encoding:
   Enabled: false
+
 # Offense count: 2
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
@@ -103,15 +133,11 @@ Style/GuardClause:
 Style/HashSyntax:
   EnforcedStyle: ruby19
 
-# Offense count: 30
-# Configuration parameters: AllowURI.
-Metrics/LineLength:
-  Max: 458
+Style/Lambda:
+  Enabled: false
 
-# Offense count: 1
-# Configuration parameters: CountComments.
-Metrics/MethodLength:
-  Max: 11
+Style/MultilineOperationIndentation:
+  Enabled: false
 
 # Offense count: 1
 # Configuration parameters: EnforcedStyle, SupportedStyles.
@@ -123,6 +149,9 @@ Style/Next:
 Style/PredicateName:
   Enabled: true
 
+Style/RaiseArgs:
+  Enabled: false
+
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/RedundantBegin:
@@ -133,15 +162,13 @@ Style/RedundantBegin:
 Style/RedundantSelf:
   Enabled: true
 
+
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/SignalException:
   Enabled: true
   EnforcedStyle: only_raise
-
-Style/RaiseArgs:
-  Enabled: false
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -197,41 +224,8 @@ Style/TrailingCommaInLiteral:
 Style/TrailingCommaInArguments:
   Enabled: true
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Style/CollectionMethods:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Style/AndOr:
-  Enabled: true
-  EnforcedStyle: conditionals
-
-Style/Lambda:
-  Enabled: false
-
-Metrics/ModuleLength:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Style/AndOr:
-  Enabled: false
-
-Style/MultilineOperationIndentation:
-  Enabled: false
-
 AllCops:
   TargetRubyVersion: 2.1
   Exclude:
     - '**/db/schema.rb'
+  DisplayCopNames: true
