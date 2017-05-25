@@ -22,8 +22,12 @@ fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ###########################################
-# autojump config
+# autojump config for mac and linux
 ###########################################
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if [ "${USER}" == "raulgarciaruiz" ]; then
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+else
+  . /usr/share/autojump/autojump.sh
+fi
 
 

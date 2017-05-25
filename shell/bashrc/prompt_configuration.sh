@@ -18,20 +18,18 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+WHITE_BLACK='\[\033[38;5;15;48;5;0m\]'
+WHITE_BLUE='\[\033[38;5;15;48;5;27m\]'
+BLACK_BLUE='\[\033[38;5;0;48;5;27m\]'
+RESET='\[\033[00m\]'
+BLUE_YELLOW='\[\033[38;5;27;48;5;226m\]'
+BLACK_YELLOW='\[\033[38;5;0;48;5;226m\]'
+YELLOW_TRANSPARENT='\[\033[38;5;226;49m\]'
+WHITE_ORANGE='\[\033[38;5;15;48;5;208m\]'
+
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
 }
 
-parse_git_dirty() {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]]
-}
-
-if [[ $(parse_git_dirty) == true ]]; then
-  export PS1='\[\033[38;5;15;48;5;0m\]\h \[\033[38;5;0;48;5;27m\]▶\[\033[00m\]\[\033[38;5;15;48;5;27m\]\w \[\033[00m\]\[\033[38;5;27;48;5;226m\]▶\[\033[0m\]\[\033[38;5;0;48;5;226m\]$(parse_git_branch) \[\033[38;5;226;49m\]▶\[\033[0m\]
-\[\033[38;5;15;48;5;0m\]▶ \[\033[0m\]'
-else
-  export PS1='\[\033[38;5;15;48;5;0m\]\h \[\033[38;5;0;48;5;27m\]▶\[\033[00m\]\[\033[38;5;15;48;5;27m\]\w \[\033[00m\]\[\033[38;5;27;48;5;226m\]▶\[\033[0m\]\[\033[38;5;0;48;5;226m\]$(parse_git_branch) \[\033[38;5;226;49m\]▶\[\033[0m\]
-\[\033[38;5;15;48;5;0m\]▶ \[\033[0m\]'
-fi
-
-#################################################
+export PS1="${WHITE_BLACK}"'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
+${WHITE_BLACK}▶ ${RESET}"
