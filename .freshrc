@@ -32,6 +32,10 @@ fresh shell/config/rubocop.yml --file=~/.rubocop.yml
 # fresh git completion
 fresh shell/completions/.git-completion.bash --file=~/.git-completion.bash
 
+# fresh tmux config
+fresh shell/config/tmux.conf --file=~/.tmux.conf
+
+
 # fresh files from fresh site
 # fresh foobacca/dotfiles bash/completion
 
