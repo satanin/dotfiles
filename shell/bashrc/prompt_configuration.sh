@@ -31,5 +31,5 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
 }
 
-export PS1="${WHITE_BLACK}"'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
-${WHITE_BLACK}▶ ${RESET}"
+export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
+${WHITE_BLACK}╰▶ ${RESET} "
