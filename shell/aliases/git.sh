@@ -12,6 +12,7 @@ alias gl='glg $(git show-ref | cut -d " " -f 2 | grep -v stash$)'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gco='git checkout'
+alias gcn='git clean -fx'
 
 alias ggpull='git pull --rebase origin $(git_current_branch)'
 alias ggpush='git push origin $(git_current_branch)'

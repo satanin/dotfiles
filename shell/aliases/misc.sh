@@ -2,7 +2,9 @@
 # dir aliases
 ###############################################################################
 alias ..='cd ..'
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ls='ls -lah'
+alias lsrt='ls -lahrt'
+alias lst='ls -la'
