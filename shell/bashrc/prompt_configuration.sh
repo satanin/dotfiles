@@ -27,7 +27,9 @@ BLACK_YELLOW='\[\033[38;5;0;48;5;226m\]'
 YELLOW_TRANSPARENT='\[\033[38;5;226;49m\]'
 YELLOW_TRANSPARENT='\[\033[38;5;118;49m\]'
 WHITE_ORANGE='\[\033[38;5;15;48;5;208m\]'
-BLACK_ORANGE='\[\033[38;5;0;48;5;118m\]'
+BLACK_LIME='\[\033[38;5;0;48;5;118m\]'
+BLUE_LIME='\[\033[38;5;27;48;5;118m\]'
+LIME_TRANSPARENT='\[\033[38;5;118;49m\]'
 
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
@@ -37,6 +39,6 @@ if [ "${USER}" == "raulgarciaruiz" ]; then
   export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
 ${WHITE_BLACK}╰▶ ${RESET} "
 else
-  export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_ORANGE}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
+  export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_ORANGE}▶${RESET}${BLACK_ORANGE}"'$(parse_git_branch)'" ${ORANGE_TRANSPARENT}▶${RESET}
 ${WHITE_BLACK}╰▶ ${RESET} "
 fi
