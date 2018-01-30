@@ -5,16 +5,16 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
+# Offense count: 0
 Lint/AmbiguousOperator:
   Enabled: true
 
-# Offense count: 1
+# Offense count: 0
 # Configuration parameters: AllowSafeAssignment.
 Lint/AssignmentInCondition:
   Enabled: true
 
-# Offense count: 3
+# Offense count: 0
 # Cop supports --auto-correct.
 Lint/UnusedMethodArgument:
   Enabled: true
@@ -27,12 +27,12 @@ Metrics/BlockLength:
   Exclude:
     - '**/spec/*'
 
-# Offense count: 30
+# Offense count: 0
 # Configuration parameters: AllowURI.
 Metrics/LineLength:
   Max: 458
 
-# Offense count: 1
+# Offense count: 0
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
   Max: 11
@@ -45,13 +45,13 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
 Style/AlignHash:
   Enabled: true
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/AlignParameters:
   # Alignment of parameters in multi-line method calls.
@@ -73,7 +73,7 @@ Style/AndOr:
   Enabled: true
   EnforcedStyle: conditionals
 
-# Offense count: 2
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/BracesAroundHashParameters:
@@ -82,11 +82,11 @@ Style/BracesAroundHashParameters:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-# Offense count: 1
+# Offense count: 0
 Style/ClassVars:
   Enabled: true
 
-# Offense count: 3
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredMethods.
 Style/CollectionMethods:
@@ -95,39 +95,39 @@ Style/CollectionMethods:
     reduce: inject
     detect: find
 
-# Offense count: 19
+# Offense count: 0
 Style/Documentation:
   Enabled: false
 
 Style/DotPosition:
   EnforcedStyle: trailing
 
-# Offense count: 6
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/EmptyLinesAroundMethodBody:
   Enabled: true
 
-# Offense count: 6
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/EmptyLinesAroundClassBody:
   Enabled: true
 
-# Offense count: 6
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/EmptyLinesAroundModuleBody:
   Enabled: true
 
-# Offense count: 20
+# Offense count: 0
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/Encoding:
   Enabled: false
 
-# Offense count: 2
+# Offense count: 0
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
   Enabled: true
 
-# Offense count: 55
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: SupportedStyles.
 Style/HashSyntax:
@@ -139,12 +139,12 @@ Style/Lambda:
 Style/MultilineOperationIndentation:
   Enabled: false
 
-# Offense count: 1
+# Offense count: 0
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/Next:
   Enabled: true
 
-# Offense count: 2
+# Offense count: 0
 # Configuration parameters: NamePrefixBlacklist.
 Style/PredicateName:
   Enabled: true
@@ -152,71 +152,66 @@ Style/PredicateName:
 Style/RaiseArgs:
   Enabled: false
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/RedundantBegin:
   Enabled: true
 
-# Offense count: 3
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/RedundantSelf:
   Enabled: true
 
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/SignalException:
   Enabled: true
   EnforcedStyle: only_raise
 
-# Offense count: 3
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: SupportedStyles.
 Style/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
-# Offense count: 5
+# Offense count: 0
 # Cop supports --auto-correct.
 Style/SpaceAroundOperators:
   Enabled: true
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/SpaceBeforeBlockBraces:
   Enabled: true
 
-# Offense count: 2
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 Style/SpaceInsideBlockBraces:
   Enabled: true
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Enabled: true
-
-# Offense count: 12
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
 Style/SpaceInsideHashLiteralBraces:
   Enabled: true
 
-# Offense count: 45
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiterals:
   Enabled: true
 
-# Offense count: 1
+# Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/TrailingBlankLines:
   Enabled: true
 
-# Offense count: 1
+# Offense count: 0
 # Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
 Style/TrailingCommaInLiteral:
   Enabled: true
@@ -224,8 +219,14 @@ Style/TrailingCommaInLiteral:
 Style/TrailingCommaInArguments:
   Enabled: true
 
+# Offense count: 0
+# Cop supports --auto-correct.
+Layout/SpaceInsideBrackets:
+  Enabled: true
+
+
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.4
   Exclude:
     - '**/db/schema.rb'
   DisplayCopNames: true
