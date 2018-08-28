@@ -37,9 +37,3 @@ fresh shell/config/tmux.conf --file=~/.tmux.conf
 
 # fresh git config
 fresh shell/config/gitconfig.conf --file=~/.gitconfig
-
-
-# fresh files from fresh site
-# fresh foobacca/dotfiles bash/completion
-
-

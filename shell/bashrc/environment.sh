@@ -11,8 +11,4 @@ export PATH=$HOME/.rbenv/shims:$PATH
 ###########################
 # EDITOR
 ###########################
-if [ "${USER}" == "raulgarciaruiz" ]; then
-  export EDITOR='subl'
-else
-  export EDITOR='vim'
-fi
+export EDITOR='vim'

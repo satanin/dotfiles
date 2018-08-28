@@ -221,7 +221,7 @@ Style/TrailingCommaInArguments:
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Layout/SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
 
 
