@@ -38,3 +38,7 @@ if [ "${USER}" == "raulgarciaruiz" ]; then
 else
   . /usr/share/autojump/autojump.sh
 fi
+###########################################
+# source fresh
+###########################################
+source ~/.fresh/build/shell.sh
