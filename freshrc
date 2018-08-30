@@ -37,3 +37,6 @@ fresh shell/config/tmux.conf --file=~/.tmux.conf
 
 # fresh git config
 fresh shell/config/gitconfig.conf --file=~/.gitconfig
+
+# fresh vim config
+fresh shell/config/vimrc --file=~/.vimrc
