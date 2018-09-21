@@ -346,7 +346,11 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Enable whitespace highlighting
+let g:better_whitespace_enabled=1
 
+" Delete whitespaces on save
+let g:strip_whitespace_on_save=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
