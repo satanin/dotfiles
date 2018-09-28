@@ -34,10 +34,16 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
 }
 
+docker_prompt() {
+  if [ -f Dockerfile ] || [ -f docker-compose*.yml ]; then
+    echo "🐳 "
+  fi
+}
+
 if [ "${USER}" == "raulgarciaruiz" ]; then
-  export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
+  export PS1="${WHITE_BLACK}╭ "'$(docker_prompt)''\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
 ${WHITE_BLACK}╰▶ ${RESET} "
 else
-  export PS1="${WHITE_BLACK}╭ "'\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_LIME}▶${RESET}${BLACK_LIME}"'$(parse_git_branch)'" ${LIME_TRANSPARENT}▶${RESET}
+  export PS1="${WHITE_BLACK}╭ "'$(docker_prompt)''\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_LIME}▶${RESET}${BLACK_LIME}"'$(parse_git_branch)'" ${LIME_TRANSPARENT}▶${RESET}
 ${WHITE_BLACK}╰▶ ${RESET} "
 fi
