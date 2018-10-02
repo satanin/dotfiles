@@ -417,6 +417,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jdsimcoe/abstract.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ntpeters/vim-better-whitespace'
+" tpope commenter plugin
+Plugin 'tpope/vim-commentary'
+" Search using ag
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " Ruby Plugins "
