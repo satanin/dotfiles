@@ -1,41 +1,3 @@
-"maintainer:
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version:
-"       6.0 - 01/04/17 14:24:34
-"
-" Blog_post:
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version:
-"       http://amix.dk/vim/vimrc.txt
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"    -> Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundler configuration
 """""""""""""""""""""""""
@@ -68,7 +30,6 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
 
-" hola que ase "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,7 +104,7 @@ endif
 
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,7 +119,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme abstract
+    colorscheme sublimemonokai
 catch
 endtry
 
@@ -282,8 +243,16 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=\[%{mode()}\]
+set statusline+=\ %F "file with path
+set statusline+=\ %r "read only mode
+set statusline+=\ %m "modified status
+set statusline+=\ %y "file type
+set statusline+=%= "right side
+set statusline+=\ %c:%l/%L " Colum:Line/Total Lines
+set statusline+=\ | "space
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -417,6 +386,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jdsimcoe/abstract.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ntpeters/vim-better-whitespace'
+" tpope vim surround to change surround of a content ex: change single quotes for doble quotes
+Plugin 'tpope/vim-surround'
 " tpope commenter plugin
 Plugin 'tpope/vim-commentary'
 " Search using ag
