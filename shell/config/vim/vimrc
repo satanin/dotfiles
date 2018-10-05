@@ -139,7 +139,13 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" define some highlight colors, just for fun
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi User1 ctermbg=202 ctermfg=15
+hi User2 ctermbg=236 ctermfg=15
+hi User3 ctermbg=16 ctermfg=202
+hi User4 ctermbg=16 ctermfg=236
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,7 +241,8 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
+" My first map!
+nmap <cr> :
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -244,13 +251,19 @@ set laststatus=2
 
 " Format the status line
 set statusline=
-set statusline+=%#PmenuSel#
+set statusline+=%1*
 set statusline+=\[%{mode()}\]
+set statusline+=%2*
 set statusline+=\ %F "file with path
 set statusline+=\ %r "read only mode
 set statusline+=\ %m "modified status
 set statusline+=\ %y "file type
+set statusline+=%4*
+set statusline+=\▶
 set statusline+=%= "right side
+set statusline+=%3*
+set statusline+=\◀
+set statusline+=%1*
 set statusline+=\ %c:%l/%L " Colum:Line/Total Lines
 set statusline+=\ | "space
 
