@@ -30,6 +30,8 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
 
+" Tags file configuration
+set tags=tags;/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
