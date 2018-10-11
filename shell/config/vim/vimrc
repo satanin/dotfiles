@@ -32,6 +32,8 @@ command! W w !sudo tee % > /dev/null
 
 " Tags file configuration
 set tags=tags;/
+" Tags configuration
+let g:gen_tags#gtags_auto_gen = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,6 +412,8 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 " Ruby Plugins "
 Plugin 'vim-ruby/vim-ruby'
+" Easy use and update of ctags
+Plugin 'jsfaint/gen_tags.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required"
