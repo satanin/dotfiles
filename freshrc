@@ -42,5 +42,5 @@ fresh shell/config/gitconfig.conf --file=~/.gitconfig
 fresh shell/config/vim/vimrc --file=~/.vimrc
 
 # fresh vim colors
-fresh shell/config/vim/colors --file=~/.vimrc/colors/
+fresh shell/config/vim/colors --file=~/.vim/colors/
 
