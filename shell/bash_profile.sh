@@ -20,6 +20,12 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 ###########################################
+# Docker completion
+###########################################
+if [-f ~/.docker-completion.bash ]; then
+  source ~/.docker-completion.bash
+fi
+###########################################
 # Load aliases from bash_aliases if exists
 ###########################################
 if [ -f ~/.bash_aliases ]; then
