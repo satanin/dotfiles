@@ -22,7 +22,7 @@ fi
 ###########################################
 # Docker completion
 ###########################################
-if [-f ~/.docker-completion.bash ]; then
+if [ -f ~/.docker-completion.bash ]; then
   source ~/.docker-completion.bash
 fi
 ###########################################
