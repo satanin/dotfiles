@@ -20,7 +20,7 @@ fi
 
 WHITE=15
 BLACK=0
-ORANGE=209
+ORANGE=203
 GRAY=238
 MAGENTA=205
 BLUE=39
@@ -58,7 +58,7 @@ if [ "${USER}" == "raulgarciaruiz" ]; then
   export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$BLUE") \w "${RESET}"$(section_colors "$GREY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
 $(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 else
-  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$GRAY" "$ORANGE") \w "${RESET}"$(section_colors "$ORANGE" "$YELLOW")"'$(parse_git_branch)'" ${RESET}
+  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$ORANGE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
 $(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 fi
 
