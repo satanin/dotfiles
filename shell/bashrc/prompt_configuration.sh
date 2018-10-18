@@ -18,27 +18,25 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-WHITE_BLACK='\[\033[38;5;15;48;5;0m\]'
-WHITE_BLUE='\[\033[38;5;15;48;5;39m\]'
-WHITE_ORANGE='\[\033[38;5;15;48;5;208m\]'
-WHITE_GRAY='\[\033[38;5;15;48;5;238m\]'
-WHITE_MAGENTA='\[\033[38;5;15;48;5;205m\]'
-BLACK_BLUE='\[\033[38;5;0;48;5;39m\]'
-BLACK_GREEN='\[\033[38;5;0;48;5;50m\]'
-BLACK_YELLOW='\[\033[38;5;0;48;5;226m\]'
-BLACK_ORANGE='\[\033[38;5;0;48;5;210m\]'
-BLACK_LIME='\[\033[38;5;0;48;5;118m\]'
-BLUE_YELLOW='\[\033[38;5;39;48;5;226m\]'
-BLUE_GREEN='\[\033[38;5;39;48;5;50m\]'
-BLUE_LIME='\[\033[38;5;27;48;5;118m\]'
-GRAY_BLUE='\[\033[38;5;234;48;5;39m\]'
-GRAY_ORANGE='\[\033[38;5;238;48;5;226m\]'
-ORANGE_MAGENTA='\[\033[38;5;210;48;5;205m\]'
-YELLOW_TRANSPARENT='\[\033[38;5;226;49m\]'
-GREEN_TRANSPARENT='\[\033[38;5;50;49m\]'
-LIME_TRANSPARENT='\[\033[38;5;118;49m\]'
-MAGENTA_TRANSPARENT='\[\033[38;5;205;49m\]'
+WHITE=15
+BLACK=0
+ORANGE=209
+GRAY=238
+MAGENTA=205
+BLUE=39
+GREEN=50
+YELLOW=227
+LIME=49
+
 RESET='\[\033[00m\]'
+
+section_colors(){
+  echo "\[\033[38;5;$1;48;5;$2m\]"
+}
+
+transparent_section(){
+  echo "\[\033[38;5;$1;49m\]"
+}
 
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
@@ -57,10 +55,12 @@ ruby_prompt(){
 }
 
 if [ "${USER}" == "raulgarciaruiz" ]; then
-  export PS1="${WHITE_GRAY}╭ "'$(docker_prompt)''\h '"${GRAY_BLUE}${RESET}${WHITE_BLUE}"' \w '"${RESET}${BLUE_GREEN}${RESET}${BLACK_GREEN}"'$(parse_git_branch)'" ${GREEN_TRANSPARENT}${RESET}
-${WHITE_BLACK}╰▶ ${RESET} "
+  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$BLUE") \w "${RESET}"$(section_colors "$GREY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
+$(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 else
-  export PS1="${WHITE_GRAY}╭ "'$(docker_prompt)''\h '"${GRAY_ORANGE}▶${RESET}${WHITE_ORANGE}"' \w '"${RESET}${ORANGE_MAGENTA}▶${RESET}${WHITE_MAGENTA}"'$(parse_git_branch)'" ${MAGENTA_TRANSPARENT}▶${RESET}
-${WHITE_GRAY}╰▶ ${RESET} "
+  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$GRAY" "$ORANGE") \w "${RESET}"$(section_colors "$ORANGE" "$YELLOW")"'$(parse_git_branch)'" ${RESET}
+$(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 fi
 
+# export PS1="$(section_colors "$WHITE" "$GRAY")╭ \h \w
+# ╰▶ "
