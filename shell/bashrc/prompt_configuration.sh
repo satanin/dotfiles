@@ -19,16 +19,26 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 WHITE_BLACK='\[\033[38;5;15;48;5;0m\]'
-WHITE_BLUE='\[\033[38;5;15;48;5;27m\]'
-BLACK_BLUE='\[\033[38;5;0;48;5;27m\]'
-RESET='\[\033[00m\]'
-BLUE_YELLOW='\[\033[38;5;27;48;5;226m\]'
-BLACK_YELLOW='\[\033[38;5;0;48;5;226m\]'
-YELLOW_TRANSPARENT='\[\033[38;5;226;49m\]'
+WHITE_BLUE='\[\033[38;5;15;48;5;39m\]'
 WHITE_ORANGE='\[\033[38;5;15;48;5;208m\]'
+WHITE_GRAY='\[\033[38;5;15;48;5;238m\]'
+WHITE_MAGENTA='\[\033[38;5;15;48;5;205m\]'
+BLACK_BLUE='\[\033[38;5;0;48;5;39m\]'
+BLACK_GREEN='\[\033[38;5;0;48;5;50m\]'
+BLACK_YELLOW='\[\033[38;5;0;48;5;226m\]'
+BLACK_ORANGE='\[\033[38;5;0;48;5;210m\]'
 BLACK_LIME='\[\033[38;5;0;48;5;118m\]'
+BLUE_YELLOW='\[\033[38;5;39;48;5;226m\]'
+BLUE_GREEN='\[\033[38;5;39;48;5;50m\]'
 BLUE_LIME='\[\033[38;5;27;48;5;118m\]'
+GRAY_BLUE='\[\033[38;5;234;48;5;39m\]'
+GRAY_ORANGE='\[\033[38;5;238;48;5;226m\]'
+ORANGE_MAGENTA='\[\033[38;5;210;48;5;205m\]'
+YELLOW_TRANSPARENT='\[\033[38;5;226;49m\]'
+GREEN_TRANSPARENT='\[\033[38;5;50;49m\]'
 LIME_TRANSPARENT='\[\033[38;5;118;49m\]'
+MAGENTA_TRANSPARENT='\[\033[38;5;205;49m\]'
+RESET='\[\033[00m\]'
 
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \1/'
@@ -40,10 +50,17 @@ docker_prompt() {
   fi
 }
 
+ruby_prompt(){
+  if [ -f Gemfile ] || [ -f .ruby-version ]; then
+    echo "🔴 "
+  fi
+}
+
 if [ "${USER}" == "raulgarciaruiz" ]; then
-  export PS1="${WHITE_BLACK}╭ "'$(docker_prompt)''\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_YELLOW}▶${RESET}${BLACK_YELLOW}"'$(parse_git_branch)'" ${YELLOW_TRANSPARENT}▶${RESET}
+  export PS1="${WHITE_GRAY}╭ "'$(docker_prompt)''\h '"${GRAY_BLUE}${RESET}${WHITE_BLUE}"' \w '"${RESET}${BLUE_GREEN}${RESET}${BLACK_GREEN}"'$(parse_git_branch)'" ${GREEN_TRANSPARENT}${RESET}
 ${WHITE_BLACK}╰▶ ${RESET} "
 else
-  export PS1="${WHITE_BLACK}╭ "'$(docker_prompt)''\h '"${BLACK_BLUE}▶${RESET}${WHITE_BLUE}"'\w '"${RESET}${BLUE_LIME}▶${RESET}${BLACK_LIME}"'$(parse_git_branch)'" ${LIME_TRANSPARENT}▶${RESET}
-${WHITE_BLACK}╰▶ ${RESET} "
+  export PS1="${WHITE_GRAY}╭ "'$(docker_prompt)''\h '"${GRAY_ORANGE}▶${RESET}${WHITE_ORANGE}"' \w '"${RESET}${ORANGE_MAGENTA}▶${RESET}${WHITE_MAGENTA}"'$(parse_git_branch)'" ${MAGENTA_TRANSPARENT}▶${RESET}
+${WHITE_GRAY}╰▶ ${RESET} "
 fi
+
