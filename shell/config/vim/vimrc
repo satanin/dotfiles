@@ -31,7 +31,8 @@ nmap <leader>w :w!<cr>
 command! W w !sudo tee % > /dev/null
 
 " Tags file configuration
-set tags=tags;/
+set tags=tags
+set path=.
 " Tags configuration
 let g:gen_tags#gtags_auto_gen = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
