@@ -48,12 +48,12 @@ Metrics/PerceivedComplexity:
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedHashRocketStyle, EnforcedColonStyle, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
-Style/AlignHash:
+Layout/AlignHash:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Style/AlignParameters:
+Layout/AlignParameters:
   # Alignment of parameters in multi-line method calls.
   #
   # The `with_first_parameter` style aligns the following lines along the same
@@ -99,22 +99,22 @@ Style/CollectionMethods:
 Style/Documentation:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Style/EmptyLinesAroundMethodBody:
+Layout/EmptyLinesAroundMethodBody:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: true
 
 # Offense count: 0
@@ -136,7 +136,7 @@ Style/HashSyntax:
 Style/Lambda:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 # Offense count: 0
@@ -173,30 +173,30 @@ Style/SignalException:
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: SupportedStyles.
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 # Offense count: 0
 # Cop supports --auto-correct.
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/SpaceBeforeBlockBraces:
+Layout/SpaceBeforeBlockBraces:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   Enabled: true
 
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SupportedStyles.
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: true
 
 # Offense count: 0
@@ -205,24 +205,18 @@ Style/SpaceInsideHashLiteralBraces:
 Style/StringLiterals:
   Enabled: true
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
 # Offense count: 0
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/TrailingBlankLines:
+Layout/TrailingBlankLines:
   Enabled: true
 
-# Offense count: 0
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-Style/TrailingCommaInLiteral:
-  Enabled: true
 
 Style/TrailingCommaInArguments:
   Enabled: true
 
-# Offense count: 0
-# Cop supports --auto-correct.
-Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: true
 
 
 AllCops:
