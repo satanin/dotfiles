@@ -47,3 +47,30 @@ fresh shell/config/vim/vimrc --file=~/.vimrc
 # fresh vim colors
 fresh shell/config/vim/colors --file=~/.vim/colors/
 
+# Brewfile
+fresh Brewfile --file=~/Brewfile
+
+# Gemfile
+# fresh Gemfile --file=~/Gemfile
+# fresh Gemfile.lock --file=~/Gemfile.lock
+
+# Bundler
+# fresh bundle/config --file=~/.bundle/config
+
+install_brew(){
+  if [ "$(uname)" = "Darwin" ] && ! which brew > /dev/null 2>&1; then
+    echo 'Installing brew'
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    cd "$HOME" && brew bundle
+  fi
+}
+
+install_vim_bundle(){
+  vim +PlugInstall +PlugUpdate +qall
+}
+
+# fresh hook
+fresh_after_build(){
+  install_brew
+  install_vim_bundle
+}
