@@ -42,7 +42,7 @@ fresh shell/config/tmux.conf --file=~/.tmux.conf
 fresh shell/config/gitconfig.conf --file=~/.gitconfig
 
 # fresh vim config
-fresh shell/config/vim/vimrc --file=~/.vimrc
+# fresh shell/config/vim/vimrc --file=~/.vimrc
 
 # fresh vim colors
 fresh shell/config/vim/colors --file=~/.vim/colors/
@@ -72,5 +72,5 @@ install_vim_bundle(){
 # fresh hook
 fresh_after_build(){
   install_brew
-  install_vim_bundle
+  # install_vim_bundle
 }
