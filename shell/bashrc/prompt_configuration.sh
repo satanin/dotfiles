@@ -54,7 +54,7 @@ ruby_prompt(){
   fi
 }
 
-if [ "${USER}" == "raulgarciaruiz" ]; then
+if [ "${USER}" == "raul.garcia@flywire.com" ]; then
   export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$BLUE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
 $(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 else
