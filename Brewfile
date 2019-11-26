@@ -6,7 +6,7 @@ brew 'htop'
 brew 'bash-completion'
 
 brew 'aws-okta'
-brew 'aws-cli'
+brew 'awscli'
 
 brew 'ctags'
 brew 'fzf'
@@ -24,5 +24,4 @@ mas 'Telegram', id: 747648890
 mas 'Whatsapp', id: 1147396723
 
 cask 'dropbox'
-cask 'spotify'
 cask 'transmission'
