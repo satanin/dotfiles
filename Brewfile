@@ -17,6 +17,7 @@ brew 'ruby-build'
 brew 'git'
 brew 'gpg'
 
+brew 'openconnect'
 brew 'vim'
 brew 'tmux'
 brew 'daisydisk'
