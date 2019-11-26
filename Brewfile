@@ -18,6 +18,9 @@ brew 'git'
 brew 'gpg'
 
 brew 'vim'
+brew 'tmux'
+brew 'daisydisk'
+brew 'keka'
 
 brew 'mas'
 mas 'Telegram', id: 747648890
@@ -25,3 +28,6 @@ mas 'Whatsapp', id: 1147396723
 
 cask 'dropbox'
 cask 'transmission'
+cask 'bitwarden'
+cask 'transmit4'
+cask 'slack'
