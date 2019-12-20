@@ -111,7 +111,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Max: 100
   Exclude:
-    - '**/spec/*'
+    - '**/spec/**/*'
 
 # Offense count: 0
 # Configuration parameters: AllowURI.
@@ -122,7 +122,8 @@ Metrics/LineLength:
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
   Max: 11
-
+  Exclude:
+    - '**/spec/**/*'
 
 Metrics/ModuleLength:
   Enabled: false
@@ -166,7 +167,6 @@ Style/CollectionMethods:
 Style/Documentation:
   Enabled: false
 
-
 # Offense count: 0
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/Encoding:
@@ -186,7 +186,6 @@ Style/HashSyntax:
 Style/Lambda:
   Enabled: false
 
-
 # Offense count: 0
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/Next:
@@ -205,7 +204,6 @@ Style/RedundantBegin:
 # Cop supports --auto-correct.
 Style/RedundantSelf:
   Enabled: true
-
 
 # Offense count: 0
 # Cop supports --auto-correct.

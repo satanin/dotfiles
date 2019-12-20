@@ -21,6 +21,7 @@ fresh-options
 # fresh bashrc
 fresh-options --file=~/.bashrc --marker=#
   fresh shell/bashrc/\*
+  fresh shell/bashrc-mixins/\*
 fresh-options
 
 # fresh bash_profile
