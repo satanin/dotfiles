@@ -12,6 +12,8 @@ function title {
   echo -ne "\033]0;"$*"\007"
 }
 
+function tab_reset_color { title "$*"; tab_color 60 60 60; }
+
 function tab_pure_red { title "$*"; tab_color 255 0 0; }
 function tab_pure_orange { title "$*"; tab_color 255 165 0; }
 function tab_pure_green { title "$*"; tab_color 0 128 0; }
