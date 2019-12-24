@@ -13,7 +13,6 @@ function title {
 }
 
 function tab_reset_color { title "$*"; tab_color 60 60 60; }
-
 function tab_pure_red { title "$*"; tab_color 255 0 0; }
 function tab_pure_orange { title "$*"; tab_color 255 165 0; }
 function tab_pure_green { title "$*"; tab_color 0 128 0; }
@@ -30,7 +29,7 @@ function tab_maroon { title "$*"; tab_color 128 0 0; }
 function tab_dark_red { title "$*"; tab_color 139 0 0; }
 function tab_brown { title "$*"; tab_color 165 42 42; }
 function tab_firebrick { title "$*"; tab_color 178 34 34; }
-function tab_crimson { title "$*"; tab_color 220 20 60; }
+function tab_crimson { title "$*"; tab_color 220 20 60; } ## This one
 function tab_tomato { title "$*"; tab_color 255 99 71; }
 function tab_coral { title "$*"; tab_color 255 127 80; }
 function tab_indian_red { title "$*"; tab_color 205 92 92; }
