@@ -3,8 +3,6 @@
 ###############################################################################
 alias be="bundle exec"
 alias ber="be rspec"
-alias rc="be c"
-alias rs="be s"
 alias rtask="be rake -T"
-alias routes="bundle exec rake routes"
+alias routes="be rake routes"
 alias rbenv-update='cd ~/.rbenv/plugins/ruby-build/ && git pull'
