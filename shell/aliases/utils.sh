@@ -25,3 +25,10 @@ pspg(){
    echo "[ postgres ]"
  fi
 }
+
+flywirepc(){
+  if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ];then
+    return 0
+  fi
+  return 1
+}
