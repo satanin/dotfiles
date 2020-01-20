@@ -113,6 +113,9 @@ Metrics/BlockLength:
   Exclude:
     - '**/spec/**/*'
 
+Metrics/ClassLength:
+  Enabled: false
+
 # Offense count: 0
 # Configuration parameters: AllowURI.
 Metrics/LineLength:
