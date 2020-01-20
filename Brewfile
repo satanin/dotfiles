@@ -5,30 +5,38 @@ brew 'htop'
 
 brew 'bash-completion'
 
-brew 'aws-okta'
-brew 'awscli'
+if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
+  brew 'aws-okta'
+  brew 'awscli'
+  brew 'openconnect'
+  brew 'gpg'
+fi
 
 brew 'ctags'
-brew 'fzf'
 brew 'global'
 
 brew 'rbenv'
 brew 'ruby-build'
 brew 'git'
-brew 'gpg'
-
-brew 'openconnect'
-brew 'vim'
 brew 'tmux'
-brew 'daisydisk'
-brew 'keka'
+
+brew 'vim'
+brew 'fzf'
 
 brew 'mas'
 mas 'Telegram', id: 747648890
 mas 'Whatsapp', id: 1147396723
+mas 'Pixelmator', id: 407963104
+mas 'CPULed', id: 448189857
+mas 'Slack', id: 803453959
+mas 'Bitwarden', id: 1352778147
+mas 'DaisyDisk', id: 411643860
+mas 'Keka', id: 470158793
 
-cask 'dropbox'
-cask 'transmission'
-cask 'bitwarden'
 cask 'transmit4'
-cask 'slack'
+
+if ! [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
+  cask 'dropbox'
+  cask 'transmission'
+fi
+
