@@ -2,6 +2,7 @@
 # ssh
 ###############################################################################
 if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
+  alias qa='tab_crimson QA;ssh qa;tab_reset_color'
   alias spook='tab_crimson Spook;ssh spook;tab_reset_color'
   alias puzzle='tab_crimson Puzzle;ssh puzzle;tab_reset_color'
   alias apache='tab_crimson Apache;ssh apache;tab_reset_color'
