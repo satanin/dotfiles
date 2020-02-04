@@ -10,4 +10,5 @@ if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
   alias barraca='tab_crimson Barraca;ssh barraca;tab_reset_color'
   alias espiral='tab_crimson Espiral;ssh espiral;tab_reset_color'
   alias rockola='tab_crimson Rockola;ssh rockola;tab_reset_color'
+  alias vagrantssh='tab_mint_cream Vagrant; vagrant ssh;tab__reset_color'
 fi
