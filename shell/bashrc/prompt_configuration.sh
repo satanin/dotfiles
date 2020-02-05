@@ -45,21 +45,21 @@ parse_git_branch() {
 
 docker_prompt() {
   if [ -f Dockerfile ] || [ -f docker-compose*.yml ]; then
-    echo "🐳 "
+    echo " 🐳 "
   fi
 }
 
 ruby_prompt(){
   if [ -f Gemfile ] || [ -f .ruby-version ]; then
-    echo "🔴 "
+    echo " ⛩  "
   fi
 }
 
 if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
-  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$PURPLE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
+  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)$(ruby_prompt)\h $(section_colors "$WHITE" "$PURPLE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
 $(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 else
-  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)\h $(section_colors "$WHITE" "$BLUE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
+  export PS1="$(section_colors "$WHITE" "$GRAY")╭ $(docker_prompt)$(ruby_prompt)\h $(section_colors "$WHITE" "$BLUE") \w "${RESET}"$(section_colors "$GRAY" "$GREEN")"'$(parse_git_branch)'" ${RESET}
 $(section_colors "$WHITE" "$GRAY")╰▶ ${RESET} "
 sudo mkdir /sys/fs/cgroup/systemd >> /dev/null 2>&1
 sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd >> /dev/null 2>&1
