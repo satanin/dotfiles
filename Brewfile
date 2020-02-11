@@ -2,7 +2,6 @@ brew 'ack'
 brew 'the_silver_searcher'
 brew 'autojump'
 brew 'htop'
-
 brew 'bash-completion'
 
 if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
