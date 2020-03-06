@@ -1,4 +1,6 @@
 brew 'ack'
+brew 'zsh'
+brew 'zsh-completion'
 brew 'the_silver_searcher'
 brew 'autojump'
 brew 'htop'
