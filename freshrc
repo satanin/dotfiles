@@ -24,6 +24,10 @@ fresh-options --file=~/.bashrc --marker=#
   fresh shell/bashrc-mixins/\*
 fresh-options
 
+# fresh zshrc
+fresh-options --file=~/.zshrc --marker=#
+  fresh shell/zsh/\*
+
 # fresh bash_profile
 fresh shell/bash_profile.sh --file=~/.bash_profile
 
@@ -69,6 +73,20 @@ install_brew(){
   fi
 }
 
+install_oh_my_zsh(){
+  if which zsh > /dev/null 2>&1; then
+    echo 'Installing Oh-my-zsh'
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi
+}
+
+set_zsh_as_default_shell(){
+  if which zsh > /dev/null 2>&1; then
+    echo 'Setting zsh as default shell'
+    chsh -s $(which zsh)
+  fi
+}
+
 install_vim_bundle(){
   vim +PlugInstall +PlugUpdate +qall
 }
@@ -77,4 +95,5 @@ install_vim_bundle(){
 fresh_after_build(){
   install_brew
   # install_vim_bundle
+  install_oh_my_zsh
 }
