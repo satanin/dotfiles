@@ -21,7 +21,7 @@ fresh-options
 # fresh bashrc
 fresh-options --file=~/.bashrc --marker=#
   fresh shell/bashrc/\*
-  fresh shell/bashrc-mixins/\*
+  fresh shell/mixins/\*
 fresh-options
 
 # fresh zshrc
@@ -31,6 +31,11 @@ fresh-options --file=~/.zshrc --marker=#
 # fresh aliases
 fresh-options --file=~/.zsh_aliases --marker=#
   fresh shell/aliases/\*
+fresh-options
+
+# zsh functions
+fresh-options --file=~/.zsh_functions --marker=#
+  fresh shell/mixins/\*
 fresh-options
 
 # fresh bash_profile
