@@ -84,7 +84,7 @@ install_brew(){
 }
 
 install_oh_my_zsh(){
-  if which zsh > /dev/null 2>&1; then
+  if which zsh > /dev/null 2>&1 && ! [[ -d ~/.oh-my-zsh ]]; then
     echo 'Installing Oh-my-zsh'
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi

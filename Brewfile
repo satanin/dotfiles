@@ -6,7 +6,7 @@ brew 'autojump'
 brew 'htop'
 brew 'bash-completion'
 
-if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
+if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" == "Darwin" ]; then
   brew 'aws-okta'
   brew 'awscli'
   brew 'openconnect'
@@ -36,7 +36,7 @@ mas 'Keka', id: 470158793
 
 cask 'transmit4'
 
-if ! [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ]; then
+if ! [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" == "Darwin" ]; then
   cask 'dropbox'
   cask 'transmission'
 fi

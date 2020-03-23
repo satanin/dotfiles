@@ -102,13 +102,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases
 source ~/.zsh_functions
 
-if [[ "${USERNAME}" == "raul.garcia@flywire.com" ]]; then
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-else
-  . /usr/share/autojump/autojump.sh
-fi
-
-
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
@@ -124,7 +117,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ###########################################
 # autojump config for mac and linux
 ###########################################
-if [ "${USER}" == "raul.garcia@flywire.com" ]; then
+if [[ "$(uname)" == "Darwin" ]] && which autojump > /dev/null 2>&1; then
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 else
   . /usr/share/autojump/autojump.sh
