@@ -60,7 +60,7 @@ fresh shell/config/gitconfig.conf --file=~/.gitconfig
 fresh shell/config/gitignore.conf --file=~/.gitignore
 
 # fresh vim config
-# fresh shell/config/vim/vimrc --file=~/.vimrc
+fresh shell/config/vim/vimrc --file=~/.vimrc
 
 # fresh vim colors
 fresh shell/config/vim/colors --file=~/.vim/colors/
