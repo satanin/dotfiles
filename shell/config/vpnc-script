@@ -1,0 +1,41 @@
+#!/bin/sh
+
+export CISCO_SPLIT_INC=0
+
+add_network () {
+  export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_ADDR=$1
+  export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASK=$2
+  export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASKLEN=$3
+  export CISCO_SPLIT_INC=`expr $CISCO_SPLIT_INC + 1`
+}
+
+add_host(){
+  ips=$(host -t A $1 | awk '/has address/ { print $4 }')
+  for ip in $ips; do
+    add_network $ip 255.255.255.255 32
+  done
+}
+
+echo "==> Dropping $CISCO_SPLIT_EXC routes ..."
+unset CISCO_SPLIT_EXC
+
+CISCO_BANNER="@josacar VPN script for Flywire routed determined routes"
+
+# Delete DNS info provided by VPN server to use internet DNS
+# Comment following line to use DNS beyond VPN tunnel
+unset INTERNAL_IP4_DNS
+
+add_network 172.17.0.0 255.255.0.0 16
+add_host gitlab.flywire.tech
+add_host git.gitlab.flywire.tech
+add_host deploy.qa.flywire.cc
+add_host deploy.flywire.lol
+add_host deploy.flywire.com
+add_host monitoring.flywire.lol
+add_host monitoring.flywire.com
+add_host victoria.flywire.com
+add_host victoriatradehouse-api.flywire.com
+
+echo "==> Adding $CISCO_SPLIT_INC networks through VPN"
+
+. /usr/local/etc/vpnc-script
