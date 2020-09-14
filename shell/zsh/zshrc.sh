@@ -130,6 +130,12 @@ export NVM_DIR="$HOME/.nvm"
 export LC_ALL=en_US.UTF-8
 
 ###########################################
+# Docker CLI
+###########################################
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
+
+###########################################
 # source fresh
 ###########################################
 source ~/.fresh/build/shell.sh
