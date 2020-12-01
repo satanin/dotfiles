@@ -19,6 +19,8 @@ Metrics/ClassLength:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false
+Layout/DotPosition:
+  Enabled: false
 Layout/LineLength:
   Max: 150
   Exclude:
