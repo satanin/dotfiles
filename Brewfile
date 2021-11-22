@@ -23,14 +23,13 @@ brew 'tmux'
 
 brew 'vim'
 brew 'fzf'
+brew 'bitwarden'
+brew 'telegram-desktop'
 
 brew 'mas'
-mas 'Telegram', id: 747648890
-mas 'Whatsapp', id: 1147396723
 mas 'Pixelmator', id: 407963104
 mas 'CPULed', id: 448189857
 mas 'Slack', id: 803453959
-mas 'Bitwarden', id: 1352778147
 mas 'DaisyDisk', id: 411643860
 mas 'Keka', id: 470158793
 
