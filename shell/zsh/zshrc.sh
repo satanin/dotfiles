@@ -156,3 +156,15 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
+
+############################
+# Tab name as current folder
+############################
+# go to iterm preferences and set Preferences>Appearance>Profiles
+# (Tab tible as Session Name, and activate: Application in terminal may change the title)
+DISABLE_AUTO_TITLE="true"
+
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
