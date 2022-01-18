@@ -74,7 +74,7 @@ ZSH_THEME="satanin"
 # Add wisely, as too many plugins slow down shell startup.
 export NVM_LAZY_LOAD=true
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-nvm)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-nvm per-directory-history)
 
 source $ZSH/oh-my-zsh.sh
 
