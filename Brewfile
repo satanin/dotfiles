@@ -5,6 +5,7 @@ brew 'the_silver_searcher'
 brew 'autojump'
 brew 'htop'
 brew 'bash-completion'
+brew 'tree'
 
 if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" == "Darwin" ]; then
   brew 'aws-okta'
