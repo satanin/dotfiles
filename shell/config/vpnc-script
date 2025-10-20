@@ -25,17 +25,6 @@ CISCO_BANNER="@josacar VPN script for Flywire routed determined routes"
 # Comment following line to use DNS beyond VPN tunnel
 unset INTERNAL_IP4_DNS
 
-add_network 172.17.0.0 255.255.0.0 16
-add_host gitlab.flywire.tech
-add_host git.gitlab.flywire.tech
-add_host deploy.qa.flywire.cc
-add_host deploy.flywire.lol
-add_host deploy.flywire.com
-add_host monitoring.flywire.lol
-add_host monitoring.flywire.com
-add_host victoria.flywire.com
-add_host victoriatradehouse-api.flywire.com
-
 echo "==> Adding $CISCO_SPLIT_INC networks through VPN"
 
 . /usr/local/etc/vpnc-script

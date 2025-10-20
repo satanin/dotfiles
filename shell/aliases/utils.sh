@@ -7,28 +7,3 @@ git_changes(){
     echo "[!]"
   fi
 }
-
-psmongod(){
-  if [[ $(ps aux |grep "[m]ongod" |grep -o "[m]ongod ") == "mongod " ]]; then
-    echo "[ mongo ]"
-  fi
-}
-
-psredis(){
-  if [[ $(ps aux |grep "[rR]edis" |grep -o "[rR]edis-server ") == "redis-server " ]]; then
-    echo "[ redis ]"
-  fi
-}
-
-pspg(){
- if [[ $(ps aux |grep "[pP]ostgres -D" |grep -o "[pP]ostgres ") == "postgres " ]]; then
-   echo "[ postgres ]"
- fi
-}
-
-flywirepc(){
-  if [[ $USER == *"@flywire.com"* ]] && [ "$(uname)" = "Darwin" ];then
-    return 0
-  fi
-  return 1
-}

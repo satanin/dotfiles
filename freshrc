@@ -13,16 +13,6 @@ FRESH_NO_BIN_CONFLICT_CHECK=true
 # Bin files
 fresh freshshell/fresh bin/fresh --bin
 
-# fresh aliases
-fresh-options --file=~/.bash_aliases --marker=#
-  fresh shell/aliases/\*
-fresh-options
-
-# fresh bashrc
-fresh-options --file=~/.bashrc --marker=#
-  fresh shell/bashrc/\*
-  fresh shell/mixins/\*
-fresh-options
 
 # fresh zshrc
 fresh-options --file=~/.zshrc --marker=#
@@ -37,12 +27,6 @@ fresh-options
 fresh-options --file=~/.zsh_functions --marker=#
   fresh shell/mixins/\*
 fresh-options
-
-# fresh bash_profile
-fresh shell/bash_profile.sh --file=~/.bash_profile
-
-# fresh rubocop
-fresh shell/config/rubocop.yml --file=~/.rubocop.yml
 
 # fresh git completion
 fresh shell/completions/git-completion.bash --file=~/.git-completion.bash
@@ -59,11 +43,6 @@ fresh shell/config/gitconfig.conf --file=~/.gitconfig
 # fresh gitignore
 fresh shell/config/gitignore.conf --file=~/.gitignore
 
-# fresh vim config
-fresh shell/config/vim/vimrc --file=~/.vimrc
-
-# fresh vim colors
-fresh shell/config/vim/colors --file=~/.vim/colors/
 
 # Brewfile
 fresh Brewfile --file=~/Brewfile
@@ -78,7 +57,7 @@ fresh Brewfile --file=~/Brewfile
 install_brew(){
   if [ "$(uname)" = "Darwin" ] && ! which brew > /dev/null 2>&1; then
     echo 'Installing brew'
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     cd "$HOME" && brew bundle
   fi
 }
@@ -101,14 +80,9 @@ set_zsh_as_default_shell(){
   fi
 }
 
-install_vim_bundle(){
-  vim +PlugInstall +PlugUpdate +qall
-}
-
 # fresh hook
 fresh_after_build(){
   install_brew
   # install_vim_bundle
   install_oh_my_zsh
-
 }
