@@ -1,1 +1,26 @@
+# Chezmoi private files
+private_*
+
+# Environment files
+*.local
+.env
+.codeartifact_env
+
+# SSH keys
+.ssh/id_*
+.ssh/*.pem
+.ssh/*.key
+
+# AWS credentials
+.aws/credentials
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# OS files
+.DS_Store
+
+# Original test file
 test.sh

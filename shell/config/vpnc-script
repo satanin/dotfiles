@@ -19,7 +19,7 @@ add_host(){
 echo "==> Dropping $CISCO_SPLIT_EXC routes ..."
 unset CISCO_SPLIT_EXC
 
-CISCO_BANNER="@josacar VPN script for Flywire routed determined routes"
+CISCO_BANNER="@josacar VPN script for corporate routed determined routes"
 
 # Delete DNS info provided by VPN server to use internet DNS
 # Comment following line to use DNS beyond VPN tunnel

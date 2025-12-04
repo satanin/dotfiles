@@ -1,0 +1,29 @@
+# Ignore sensitive files
+private_*
+*.local
+.env
+.codeartifact_env
+
+# Ignore Claude configuration with secrets
+.claude.json
+.claude/claude.json
+
+# Ignore SSH keys
+.ssh/id_*
+.ssh/*.pem
+.ssh/*.key
+
+# Ignore AWS credentials
+.aws/credentials
+
+# Ignore PGP keys
+.gnupg/*.asc
+.gnupg/private_key*
+.gnupg/public_key*
+.gnupg/secring.*
+.gnupg/pubring.*
+
+# Ignore temporary files
+*.tmp
+*.bak
+*~

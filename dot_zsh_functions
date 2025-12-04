@@ -1,0 +1,54 @@
+# Docker functions
+function stop_containers() {
+  docker ps | awk '{if (NR!=1) {print $1}}' | xargs docker stop
+}
+
+function remove_images() {
+  docker images | grep none | awk '{ print $3}' | xargs docker image rm
+}
+
+# iTerm functions
+function titlepwd() {
+  title `pwd`
+}
+
+function tab_color() {
+  echo -n -e "\033]6;1;bg;red;brightness;$1\a"
+  echo -n -e "\033]6;1;bg;green;brightness;$2\a"
+  echo -n -e "\033]6;1;bg;blue;brightness;$3\a"
+}
+
+function title {
+  echo -ne "\033]0;"$*"\007"
+}
+
+function tab_reset_color { title "$*"; tab_color 20 20 20; }
+function tab_pure_red { title "$*"; tab_color 255 0 0; }
+function tab_pure_orange { title "$*"; tab_color 255 165 0; }
+function tab_pure_green { title "$*"; tab_color 0 128 0; }
+function tab_pure_blue { title "$*"; tab_color 0 0 255; }
+function tab_pure_yellow { title "$*"; tab_color 255 255 0; }
+
+function tab_red()    { title "$*"; tab_color 195  89  76; }
+function tab_orange() { title "$*"; tab_color 219 154  88; }
+function tab_green()  { title "$*"; tab_color  65 174  76; }
+function tab_blue()   { title "$*"; tab_color  92 155 204; }
+function tab_yellow() { title "$*"; tab_color 240 240   0; }
+
+function tab_maroon { title "$*"; tab_color 128 0 0; }
+function tab_dark_red { title "$*"; tab_color 139 0 0; }
+function tab_brown { title "$*"; tab_color 165 42 42; }
+function tab_firebrick { title "$*"; tab_color 178 34 34; }
+function tab_crimson { title "$*"; tab_color 220 20 60; }
+function tab_tomato { title "$*"; tab_color 255 99 71; }
+function tab_coral { title "$*"; tab_color 255 127 80; }
+function tab_indian_red { title "$*"; tab_color 205 92 92; }
+function tab_light_coral { title "$*"; tab_color 240 128 128; }
+function tab_dark_salmon { title "$*"; tab_color 233 150 122; }
+function tab_salmon { title "$*"; tab_color 250 128 114; }
+function tab_light_salmon { title "$*"; tab_color 255 160 122; }
+function tab_orange_red { title "$*"; tab_color 255 69 0; }
+function tab_dark_orange { title "$*"; tab_color 255 140 0; }
+function tab_gold { title "$*"; tab_color 255 215 0; }
+function tab_dark_golden_rod { title "$*"; tab_color 184 134 11; }
+function tab_golden_rod { title "$*"; tab_color 218 165 32; }

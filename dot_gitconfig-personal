@@ -1,0 +1,14 @@
+# Personal Git Configuration
+# Used only in ~/.dotfiles/ (and other personal directories you add)
+
+[user]
+	name = Raul Garcia
+	email = satanin@gmail.com
+
+[github]
+	user = rgarcia-flywire
+
+# Personal aliases for dotfiles
+[alias]
+	personal-init = "!f() { git config user.email 'satanin@gmail.com'; }; f"
+	dotfiles-status = "!echo 'Using personal email for dotfiles: $(git config user.email)'"
