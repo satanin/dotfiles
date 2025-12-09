@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Setup Bitwarden integration for chezmoi
-# Version: 2.1.0 (2024-12-09)
+# Version: 2.2.0 (2024-12-09)
 
 echo "Setting up Bitwarden integration..."
-echo "🔧 Script version: 2.1.0 (setup-bitwarden)"
+echo "🔧 Script version: 2.2.0 (setup-bitwarden)"
 
 # Check if Bitwarden CLI is installed
 if ! command -v bw &> /dev/null; then
@@ -24,7 +24,6 @@ if ! bw status | grep -q '"status":"unlocked"'; then
     echo ""
     echo "3. Verify these required items exist in your vault:"
     echo "   - GitLab Personal Token - Main (required)"
-    echo "   - Claude API Key (required)"
     echo "   - SSH Key - id_rsa (required)"
     echo "   - SSH Key - satanin@gmail.com (required)"
     echo ""
@@ -32,6 +31,7 @@ if ! bw status | grep -q '"status":"unlocked"'; then
     echo "   - GitLab Personal Token - Secondary"
     echo "   - Confluence Personal Token"
     echo "   - Jira Personal Token"
+    echo "   - OpenAI API Key"
     echo ""
     echo "4. Templates will use Bitwarden data automatically once unlocked"
     exit 1
@@ -40,7 +40,6 @@ fi
 # Verify Bitwarden items (some required, some optional)
 required_items=(
     "GitLab Personal Token - Main"
-    "Claude API Key"
     "SSH Key - id_rsa"
     "SSH Key - satanin@gmail.com"
 )
