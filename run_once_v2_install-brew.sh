@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Install Homebrew and packages with conflict checking
-# Version: 2.1.0 (2024-12-09)
+# Version: 2.2.0 (2024-12-09)
 set -e
 
 echo "🍺 Setting up Homebrew..."
-echo "🔧 Script version: 2.1.0 (install-brew)"
+echo "🔧 Script version: 2.2.0 (v2-install-brew)"
 
 # Debug info
 echo "🔍 Debug info:"
