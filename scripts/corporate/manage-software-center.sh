@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Enterprise Software Center Manifest Management
+# Version: 2.1.0 (2024-12-09)
 set -e
 
 MANIFEST_PATH="/Library/Managed Installs/manifests/SelfServeManifest"
@@ -92,6 +93,7 @@ show_status() {
 
 backup_manifest() {
     echo "📦 Backing up Software Center manifest..."
+    echo "🔧 Management script version: 2.1.0"
 
     if ! is_corporate_machine; then
         echo "❌ Not a corporate machine, skipping backup"
@@ -122,6 +124,7 @@ backup_manifest() {
 
 restore_manifest() {
     echo "🔄 Restoring Software Center manifest..."
+    echo "🔧 Management script version: 2.1.0"
 
     if ! is_corporate_machine; then
         echo "❌ Not a corporate machine, skipping restore"
