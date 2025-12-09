@@ -1,7 +1,7 @@
 [data]
-  name = "Raul Garcia"
-  email = "raul.garcia@flywire.com"
-  github_user = "satanin"
+  name = "Your Name"
+  email = "your.email@company.com"
+  github_user = "yourusername"
 
 # Configuración específica de la máquina
 [data.personal]

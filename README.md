@@ -41,6 +41,8 @@ This will install all packages and setup everything:
 chezmoi apply
 ```
 
+**Note**: During the first run, you'll be prompted to enter your personal information (name, email, GitHub username) to configure git and other tools properly.
+
 ## Alternative: Manual Setup
 
 If you prefer more control over the process:
