@@ -11,7 +11,21 @@ echo "🔧 Script version: 2.2.0 (v2-install-brew)"
 echo "🔍 Debug info:"
 echo "   Operating system: $(uname)"
 echo "   Homebrew available: $(command -v brew &> /dev/null && echo "✅ Yes" || echo "❌ No")"
-DOTFILES_DIR="$(chezmoi source-path 2>/dev/null || echo "$HOME/.dotfiles")"
+# Try multiple ways to find the dotfiles directory
+DOTFILES_DIR="$(chezmoi source-path 2>/dev/null || echo "")"
+if [[ -z "$DOTFILES_DIR" ]] || [[ ! -f "$DOTFILES_DIR/Brewfile" ]]; then
+    echo "⚠️  chezmoi source-path failed or no Brewfile found, trying alternatives..."
+
+    # Try common locations
+    for dir in "$HOME/.local/share/chezmoi" "$HOME/.dotfiles" "$(dirname "$(realpath "$0")")"; do
+        if [[ -f "$dir/Brewfile" ]]; then
+            DOTFILES_DIR="$dir"
+            echo "✅ Found Brewfile in: $DOTFILES_DIR"
+            break
+        fi
+    done
+fi
+
 echo "   Dotfiles directory: $DOTFILES_DIR"
 echo "   Brewfile exists: $(test -f "$DOTFILES_DIR/Brewfile" && echo "✅ Yes" || echo "❌ No")"
 
@@ -54,6 +68,28 @@ fi
 # Install packages from Brewfile
 echo ""
 echo "📦 Installing packages from Brewfile..."
+echo "🔍 Debug before brew bundle:"
+echo "   Current directory: $(pwd)"
+echo "   Target directory: $DOTFILES_DIR"
+echo "   Directory exists: $(test -d "$DOTFILES_DIR" && echo "✅ Yes" || echo "❌ No")"
+echo "   Brewfile exists: $(test -f "$DOTFILES_DIR/Brewfile" && echo "✅ Yes" || echo "❌ No")"
+echo "   Brewfile path: $DOTFILES_DIR/Brewfile"
+
+# List contents of target directory for debug
+if [[ -d "$DOTFILES_DIR" ]]; then
+    echo "   Directory contents:"
+    ls -la "$DOTFILES_DIR/" | head -10
+fi
+
+# Final validation before running brew bundle
+if [[ ! -f "$DOTFILES_DIR/Brewfile" ]]; then
+    echo "❌ Error: Brewfile not found at $DOTFILES_DIR/Brewfile"
+    echo "   Available files in $DOTFILES_DIR:"
+    ls -la "$DOTFILES_DIR/" 2>/dev/null || echo "   Directory not accessible"
+    exit 1
+fi
+
+echo "✅ Running brew bundle install from: $DOTFILES_DIR"
 cd "$DOTFILES_DIR" && brew bundle install
 
 echo ""
