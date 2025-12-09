@@ -1,13 +1,21 @@
 #!/bin/bash
 
 # Install and configure Claude Code
+# Version: 2.1.0 (2024-12-09)
 set -e
 
 echo "🤖 Installing and configuring Claude Code..."
+echo "🔧 Script version: 2.1.0 (install-claude-code)"
 
-# Check if Claude Code is already installed
-if command -v claude-code &> /dev/null; then
-    current_version=$(claude-code --version 2>/dev/null || echo "unknown")
+# Debug info
+echo "🔍 Debug info:"
+echo "   Homebrew available: $(command -v brew &> /dev/null && echo "✅ Yes" || echo "❌ No")"
+echo "   Claude binary available: $(command -v claude &> /dev/null && echo "✅ Yes" || echo "❌ No")"
+echo "   Claude-code binary available: $(command -v claude-code &> /dev/null && echo "✅ Yes" || echo "❌ No")"
+
+# Check if Claude Code is already installed (it's installed as 'claude', not 'claude-code')
+if command -v claude &> /dev/null; then
+    current_version=$(claude --version 2>/dev/null || echo "unknown")
     echo "✅ Claude Code already installed (version: $current_version)"
 else
     echo "📦 Installing Claude Code via Homebrew..."
@@ -22,8 +30,8 @@ else
     brew install --cask claude-code
 
     # Verify installation
-    if command -v claude-code &> /dev/null; then
-        installed_version=$(claude-code --version 2>/dev/null || echo "installed")
+    if command -v claude &> /dev/null; then
+        installed_version=$(claude --version 2>/dev/null || echo "installed")
         echo "✅ Claude Code installed successfully (version: $installed_version)"
     else
         echo "❌ Failed to install Claude Code"

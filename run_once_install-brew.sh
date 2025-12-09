@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # Install Homebrew and packages with conflict checking
+# Version: 2.1.0 (2024-12-09)
 set -e
 
 echo "🍺 Setting up Homebrew..."
+echo "🔧 Script version: 2.1.0 (install-brew)"
+
+# Debug info
+echo "🔍 Debug info:"
+echo "   Operating system: $(uname)"
+echo "   Homebrew available: $(command -v brew &> /dev/null && echo "✅ Yes" || echo "❌ No")"
+echo "   Brewfile exists: $(test -f "$HOME/.dotfiles/Brewfile" && echo "✅ Yes" || echo "❌ No")"
 
 # Install Homebrew if not present on macOS
 if [ "$(uname)" = "Darwin" ] && ! which brew > /dev/null 2>&1; then
