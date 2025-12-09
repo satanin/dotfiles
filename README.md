@@ -15,23 +15,29 @@ Modern dotfiles management with [chezmoi](https://chezmoi.io) and [Bitwarden](ht
 
 ## Quick Setup (New Machine)
 
-### Recommended: One-Line Installation
+### Step 1: Install chezmoi and initialize dotfiles
 ```bash
-# Install chezmoi and initialize dotfiles
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/satanin/dotfiles.git
 ```
 
-### Complete Setup
-After the one-line installation, complete the setup:
+### Step 2: Install Bitwarden CLI
 ```bash
-# 1. Install Bitwarden CLI (if not already installed)
 brew install bitwarden-cli
+```
 
-# 2. Login to Bitwarden and unlock
+### Step 3: Login to Bitwarden
+```bash
 bw login
-export BW_SESSION=$(bw unlock --raw)
+```
 
-# 3. Apply configuration (this will install all packages and setup everything)
+### Step 4: Unlock Bitwarden and set session
+```bash
+export BW_SESSION=$(bw unlock --raw)
+```
+
+### Step 5: Apply configuration
+This will install all packages and setup everything:
+```bash
 chezmoi apply
 ```
 
@@ -39,21 +45,33 @@ chezmoi apply
 
 If you prefer more control over the process:
 
+### Step 1: Install chezmoi
 ```bash
-# 1. Install chezmoi
 sh -c "$(curl -fsLS get.chezmoi.io)"
+```
 
-# 2. Initialize dotfiles
+### Step 2: Initialize dotfiles
+```bash
 chezmoi init https://github.com/satanin/dotfiles.git
+```
 
-# 3. Install Bitwarden CLI
+### Step 3: Install Bitwarden CLI
+```bash
 brew install bitwarden-cli
+```
 
-# 4. Setup Bitwarden
+### Step 4: Setup Bitwarden
+```bash
 bw login
-export BW_SESSION=$(bw unlock --raw)
+```
 
-# 5. Apply configuration
+### Step 5: Unlock Bitwarden and set session
+```bash
+export BW_SESSION=$(bw unlock --raw)
+```
+
+### Step 6: Apply configuration
+```bash
 chezmoi apply
 ```
 
@@ -167,113 +185,192 @@ The following items are automatically created/managed in Bitwarden:
 ## Usage
 
 ### Daily Commands
+
+Check what would change:
 ```bash
-# Check what would change
 chezmoi diff
+```
 
-# Apply changes
+Apply changes:
+```bash
 chezmoi apply
+```
 
-# Edit a template
+Edit a template:
+```bash
 chezmoi edit ~/.gitconfig
+```
 
-# Add new file to management
+Add new file to management:
+```bash
 chezmoi add ~/.newfile
 ```
 
 ### Key Management
-```bash
-# Backup new keys
-./run_once_backup-keys-to-bitwarden.sh
 
-# Full key setup (backup + apply)
+Backup new keys:
+```bash
+./run_once_backup-keys-to-bitwarden.sh
+```
+
+Full key setup (backup + apply):
+```bash
 ./setup-keys.sh
 ```
 
 ### Claude Code Setup
-```bash
-# Set up Claude API tokens in Bitwarden
-./setup-claude-tokens.sh
 
-# Install Claude Code and configure
+Set up Claude API tokens in Bitwarden:
+```bash
+./setup-claude-tokens.sh
+```
+
+Install Claude Code and configure:
+```bash
 ./run_once_install-claude-code.sh
 ```
 
 ### AWS CodeArtifact Setup
-```bash
-# Set up CodeArtifact for Ruby gems
-./run_once_setup-codeartifact.sh
 
-# Authenticate and get tokens (expires every 12h)
+Set up CodeArtifact for Ruby gems:
+```bash
+./run_once_setup-codeartifact.sh
+```
+
+Authenticate and get tokens (expires every 12h):
+```bash
 ./aws-login.sh
 ```
 
 ### iTerm2 Preferences Management
+
+Backup current iTerm2 preferences:
 ```bash
-# Backup current iTerm2 preferences
 ./run_once_backup-iterm-preferences.sh
+```
 
-# Restore iTerm2 preferences (done automatically)
+Restore iTerm2 preferences (done automatically):
+```bash
 ./run_once_setup-iterm.sh
+```
 
-# Advanced preference management
-./manage-iterm-preferences.sh status   # Check backup status
-./manage-iterm-preferences.sh backup   # Manual backup
-./manage-iterm-preferences.sh restore  # Manual restore
-./manage-iterm-preferences.sh sync     # Sync preferences
+Check backup status:
+```bash
+./manage-iterm-preferences.sh status
+```
+
+Manual backup:
+```bash
+./manage-iterm-preferences.sh backup
+```
+
+Manual restore:
+```bash
+./manage-iterm-preferences.sh restore
+```
+
+Sync preferences:
+```bash
+./manage-iterm-preferences.sh sync
 ```
 
 ### Enterprise Software Center Management
+
+Backup Software Center manifest (corporate machines only):
 ```bash
-# Backup Software Center manifest (corporate machines only)
 ./run_once_backup-software-center-manifest.sh
+```
 
-# Restore manifest on new corporate machine (automatic)
+Restore manifest on new corporate machine (automatic):
+```bash
 ./run_once_restore-software-center-manifest.sh
+```
 
-# Advanced Software Center management
-./manage-software-center.sh status     # Check manifest status
-./manage-software-center.sh check      # Verify corporate machine
-./manage-software-center.sh backup     # Manual backup (requires sudo)
-./manage-software-center.sh restore    # Manual restore (requires sudo)
+Check manifest status:
+```bash
+./manage-software-center.sh status
+```
+
+Verify corporate machine:
+```bash
+./manage-software-center.sh check
+```
+
+Manual backup (requires sudo):
+```bash
+./manage-software-center.sh backup
+```
+
+Manual restore (requires sudo):
+```bash
+./manage-software-center.sh restore
 ```
 
 ### Homebrew Conflict Prevention
+
+Check for conflicts with Software Center before installing:
 ```bash
-# Check for conflicts with Software Center before installing
-./check-brew-conflicts.sh check        # Check for conflicts
-./check-brew-conflicts.sh list         # List all installed applications
+./check-brew-conflicts.sh check
+```
 
-# Manage Brewfile applications safely
-./brew-app-manager.sh list             # Show disabled applications
-./brew-app-manager.sh enable chrome    # Enable application after conflict check
-./brew-app-manager.sh disable docker   # Disable application
-./brew-app-manager.sh check            # Run conflict check
+List all installed applications:
+```bash
+./check-brew-conflicts.sh list
+```
 
-# Generate smart Brewfile (advanced)
-./generate-smart-brewfile.sh           # Generate conflict-aware Brewfile
+Show disabled applications:
+```bash
+./brew-app-manager.sh list
+```
+
+Enable application after conflict check:
+```bash
+./brew-app-manager.sh enable chrome
+```
+
+Disable application:
+```bash
+./brew-app-manager.sh disable docker
+```
+
+Run conflict check:
+```bash
+./brew-app-manager.sh check
+```
+
+Generate smart Brewfile (advanced):
+```bash
+./generate-smart-brewfile.sh
 ```
 
 ## Troubleshooting
 
 ### Bitwarden Issues
+
+Check Bitwarden status:
 ```bash
-# Check Bitwarden status
 bw status
+```
 
-# Unlock if locked
+Unlock if locked:
+```bash
 bw unlock
+```
 
-# Re-login if needed
+Re-login if needed:
+```bash
 bw logout && bw login
 ```
 
 ### Chezmoi Issues
-```bash
-# Reset chezmoi state
-chezmoi init --force
 
-# Debug template rendering
+Reset chezmoi state:
+```bash
+chezmoi init --force
+```
+
+Debug template rendering:
+```bash
 chezmoi execute-template '{{ bitwarden "item-name" }}'
 ```
 
