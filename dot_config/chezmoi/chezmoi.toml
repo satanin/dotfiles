@@ -1,0 +1,13 @@
+[data]
+  name = "Raul Garcia"
+  email = "raul.garcia@flywire.com"
+  github_user = "satanin"
+
+# Configuración específica de la máquina
+[data.personal]
+  hostname = "{{ .chezmoi.hostname }}"
+
+# Configuración de Bitwarden
+[bitwarden]
+  command = "bw"
+  args = ["get", "item"]

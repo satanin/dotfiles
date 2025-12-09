@@ -15,72 +15,47 @@ Modern dotfiles management with [chezmoi](https://chezmoi.io) and [Bitwarden](ht
 
 ## Quick Setup (New Machine)
 
-```bash
-# 1. Download and run bootstrap script
-curl -fsSL https://raw.githubusercontent.com/satanin/dotfiles/master/bootstrap.sh | bash
-
-# 2. Login to Bitwarden and apply configuration
-bw login
-bw unlock
-chezmoi apply
-```
-
-## Manual Setup
-
-### Prerequisites
-- macOS
-- Homebrew (will be installed automatically)
-
-### One-Line Installation
+### Recommended: One-Line Installation
 ```bash
 # Install chezmoi and initialize dotfiles
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/satanin/dotfiles.git
 ```
 
-### Alternative: Step by Step with Chezmoi
+### Complete Setup
+After the one-line installation, complete the setup:
 ```bash
-# Install chezmoi
-sh -c "$(curl -fsLS get.chezmoi.io)"
+# 1. Install Bitwarden CLI (if not already installed)
+brew install bitwarden-cli
 
-# Initialize dotfiles
-chezmoi init https://github.com/satanin/dotfiles.git
+# 2. Login to Bitwarden and unlock
+bw login
+export BW_SESSION=$(bw unlock --raw)
 
-# Apply configuration
+# 3. Apply configuration (this will install all packages and setup everything)
 chezmoi apply
 ```
 
-### Step-by-Step Installation
+## Alternative: Manual Setup
 
-1. **Clone this repository:**
-   ```bash
-   git clone https://github.com/satanin/dotfiles.git ~/.dotfiles
-   cd ~/.dotfiles
-   ```
+If you prefer more control over the process:
 
-2. **Install dependencies:**
-   ```bash
-   # Install essential tools
-   brew install chezmoi bitwarden-cli
+```bash
+# 1. Install chezmoi
+sh -c "$(curl -fsLS get.chezmoi.io)"
 
-   # Install all packages
-   brew bundle install
-   ```
+# 2. Initialize dotfiles
+chezmoi init https://github.com/satanin/dotfiles.git
 
-3. **Initialize chezmoi:**
-   ```bash
-   chezmoi init --source="~/.dotfiles"
-   ```
+# 3. Install Bitwarden CLI
+brew install bitwarden-cli
 
-4. **Setup Bitwarden:**
-   ```bash
-   bw login
-   bw unlock
-   ```
+# 4. Setup Bitwarden
+bw login
+export BW_SESSION=$(bw unlock --raw)
 
-5. **Apply configuration:**
-   ```bash
-   chezmoi apply
-   ```
+# 5. Apply configuration
+chezmoi apply
+```
 
 ## Key Management
 
@@ -103,7 +78,7 @@ This automatically:
 ## File Structure
 
 ```
-~/.dotfiles/
+dotfiles/
 ├── bootstrap.sh                           # New machine setup script
 ├── setup-keys.sh                          # Complete key management
 ├── Brewfile                               # Homebrew packages
@@ -311,7 +286,7 @@ chezmoi execute-template '{{ bitwarden "item-name" }}'
 
 ## Contributing
 
-1. Make changes to source files in `~/.dotfiles`
+1. Make changes to source files in your chezmoi directory
 2. Test with `chezmoi diff`
 3. Apply with `chezmoi apply`
 4. Commit and push changes
