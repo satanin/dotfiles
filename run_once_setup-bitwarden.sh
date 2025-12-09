@@ -26,7 +26,7 @@ if ! bw status | grep -q '"status":"unlocked"'; then
     echo "   - Confluence Personal Token"
     echo "   - Jira Personal Token"
     echo ""
-    echo "4. Then run: chezmoi apply"
+    echo "4. Templates will use Bitwarden data automatically once unlocked"
     exit 1
 fi
 

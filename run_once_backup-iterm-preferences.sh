@@ -7,7 +7,9 @@ echo "📱 Backing up iTerm2 preferences..."
 
 # Check if iTerm2 is installed
 if ! command -v iTerm >/dev/null 2>&1 && ! ls /Applications/ | grep -i iterm >/dev/null 2>&1; then
-    echo "⚠️  iTerm2 not found. Installing via Homebrew first..."
+    echo "⚠️  iTerm2 not found on this machine"
+    echo "   This is normal for new setups - iTerm2 will be installed via Brewfile"
+    echo "   Skipping iTerm2 preferences backup (nothing to backup)"
     exit 0
 fi
 

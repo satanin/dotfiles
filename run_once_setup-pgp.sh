@@ -3,7 +3,25 @@
 # Setup PGP keys from chezmoi managed files
 set -e
 
-echo "🔐 Setting up PGP keys..."
+echo "🔐 Checking for PGP key setup..."
+
+# Check if GPG is available
+if ! command -v gpg &> /dev/null; then
+    echo "📝 GPG not found on this machine"
+    echo "   This is normal for new setups - GPG will be installed if needed"
+    echo "   Skipping PGP key setup (GPG not available)"
+    exit 0
+fi
+
+# Check if there are any PGP files to import
+if [[ ! -f ~/.gnupg/private_key.asc ]] && [[ ! -f ~/.gnupg/public_keys.asc ]] && [[ ! -f ~/.gnupg/trust_db.txt ]]; then
+    echo "📝 No PGP keys found to import"
+    echo "   This is normal for new setups - keys will be restored from Bitwarden when available"
+    echo "   Skipping PGP key setup (nothing to import)"
+    exit 0
+fi
+
+echo "🔐 Found PGP keys to import, setting up GPG..."
 
 # Create .gnupg directory with proper permissions
 mkdir -p ~/.gnupg

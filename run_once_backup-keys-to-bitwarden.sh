@@ -3,7 +3,34 @@
 # Backup SSH and PGP keys to Bitwarden automatically
 set -e
 
-echo "🔐 Backing up SSH and PGP keys to Bitwarden..."
+echo "🔐 Checking for SSH and PGP keys to backup to Bitwarden..."
+
+# Check if there are any keys to backup first
+ssh_keys_exist=false
+pgp_keys_exist=false
+
+# Check for SSH keys
+if [[ -f ~/.ssh/id_rsa ]] || [[ -f ~/.ssh/id_rsa_satanin@gmail.com ]] || [[ -f ~/.ssh/config ]] || [[ -f ~/.ssh/known_hosts ]]; then
+    ssh_keys_exist=true
+fi
+
+# Check for PGP keys
+if command -v gpg &> /dev/null; then
+    secret_keys=$(gpg --list-secret-keys --keyid-format LONG 2>/dev/null | grep sec || echo "")
+    if [[ -n "$secret_keys" ]]; then
+        pgp_keys_exist=true
+    fi
+fi
+
+# If no keys found, skip the backup
+if [[ "$ssh_keys_exist" == false ]] && [[ "$pgp_keys_exist" == false ]]; then
+    echo "📝 No SSH or PGP keys found on this machine"
+    echo "   This is normal for new setups - keys will be restored from Bitwarden when available"
+    echo "   Skipping key backup (nothing to backup)"
+    exit 0
+fi
+
+echo "🔐 Found keys to backup, proceeding with Bitwarden backup..."
 
 # Check if Bitwarden CLI is available and logged in
 if ! command -v bw &> /dev/null; then
@@ -119,15 +146,7 @@ else
 fi
 
 echo ""
-echo "🎉 Backup completed successfully!"
+echo "🎉 Key backup completed successfully!"
 echo ""
-echo "📌 Created/Updated Bitwarden items:"
-echo "   • SSH Key - id_rsa"
-echo "   • SSH Key - satanin@gmail.com"
-echo "   • SSH Config"
-echo "   • SSH Known Hosts"
-echo "   • PGP Private Keys (if found)"
-echo "   • PGP Public Keys (if found)"
-echo "   • PGP Trust Database (if found)"
-echo ""
-echo "🔄 Next: Run 'chezmoi apply' to set up templates for automatic recovery"
+echo "📌 Available Bitwarden items have been created/updated as needed"
+echo "   Keys will be automatically restored on other machines when you run chezmoi apply"
