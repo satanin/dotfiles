@@ -1,8 +1,8 @@
+{{- $aws_notes := output "bw" "get" "item" "5d221153-c9e6-4407-8cb6-b3ae01192955" | fromJson -}}
+{{- $aws_config := fromIni $aws_notes.notes -}}
 {
 	"auths": {
-		"339713173028.dkr.ecr.us-east-1.amazonaws.com": {},
-		"590183687853.dkr.ecr.us-east-1.amazonaws.com": {},
-		"https://306077209789.dkr.ecr.us-east-1.amazonaws.com": {},
+		"{{ $aws_config.ECR_REGISTRY }}": {},
 		"https://index.docker.io/v1/": {}
 	},
 	"credsStore": "desktop",

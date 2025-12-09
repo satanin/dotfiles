@@ -1,0 +1,90 @@
+#!/bin/bash
+
+# AWS ECR and CodeArtifact Login Script
+# This script automates the login process for both ECR and CodeArtifact
+
+set -e  # Exit on any error
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Configuration from Bitwarden
+{{- $aws_notes := output "bw" "get" "item" "5d221153-c9e6-4407-8cb6-b3ae01192955" | fromJson -}}
+{{- $aws_config := fromIni $aws_notes.notes -}}
+ECR_REGION="us-east-1"
+ECR_REGISTRY="{{ $aws_config.ECR_REGISTRY }}"
+ECR_PROFILE="{{ $aws_config.ECR_PROFILE }}"
+CODEARTIFACT_DOMAIN="{{ $aws_config.CODEARTIFACT_DOMAIN }}"
+CODEARTIFACT_DOMAIN_OWNER="{{ $aws_config.CODEARTIFACT_DOMAIN_OWNER }}"
+CODEARTIFACT_PROFILE="{{ $aws_config.CODEARTIFACT_PROFILE }}"
+CODEARTIFACT_ENV_FILE="$HOME/.codeartifact_env"
+
+echo -e "${YELLOW}🔐 Starting AWS ECR and CodeArtifact login process...${NC}"
+
+# Function to check if command succeeded
+check_command() {
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✅ $1 successful${NC}"
+    else
+        echo -e "${RED}❌ $1 failed${NC}"
+        exit 1
+    fi
+}
+
+# 1. ECR Login
+echo -e "${YELLOW}📦 Logging into ECR...${NC}"
+echo "Profile: $ECR_PROFILE"
+echo "Registry: $ECR_REGISTRY"
+
+# SSO login for ECR
+aws sso login --profile "$ECR_PROFILE"
+check_command "ECR SSO login"
+
+# Get ECR login token and login to Docker
+aws ecr get-login-password --region "$ECR_REGION" --profile "$ECR_PROFILE" | \
+    docker login --username AWS --password-stdin "$ECR_REGISTRY"
+check_command "ECR Docker login"
+
+# 2. CodeArtifact Login
+echo -e "${YELLOW}📚 Logging into CodeArtifact...${NC}"
+echo "Domain: $CODEARTIFACT_DOMAIN"
+echo "Domain Owner: $CODEARTIFACT_DOMAIN_OWNER"
+echo "Profile: $CODEARTIFACT_PROFILE"
+
+# Get CodeArtifact token
+CODEARTIFACT_TOKEN=$(aws codeartifact get-authorization-token \
+    --domain "$CODEARTIFACT_DOMAIN" \
+    --domain-owner "$CODEARTIFACT_DOMAIN_OWNER" \
+    --query authorizationToken \
+    --output text \
+    --profile "$CODEARTIFACT_PROFILE")
+check_command "CodeArtifact token generation"
+
+# 3. Export environment variables
+echo -e "${YELLOW}🔧 Setting up environment variables...${NC}"
+
+# Create/update the CodeArtifact environment file
+cat > "$CODEARTIFACT_ENV_FILE" << EOF
+export AWS_CODEARTIFACT_TOKEN=$CODEARTIFACT_TOKEN
+export BUNDLE_{{ $aws_config.CODEARTIFACT_DOMAIN | upper }}___{{ $aws_config.CODEARTIFACT_DOMAIN_OWNER }}__D__CODEARTIFACT__US___EAST___1__AMAZONAWS__COM="aws:\$AWS_CODEARTIFACT_TOKEN"
+EOF
+
+check_command "Environment file creation"
+
+# Export variables for current session
+export AWS_CODEARTIFACT_TOKEN="$CODEARTIFACT_TOKEN"
+export BUNDLE_{{ $aws_config.CODEARTIFACT_DOMAIN | upper }}___{{ $aws_config.CODEARTIFACT_DOMAIN_OWNER }}__D__CODEARTIFACT__US___EAST___1__AMAZONAWS__COM="aws:$CODEARTIFACT_TOKEN"
+
+echo -e "${GREEN}🎉 All logins completed successfully!${NC}"
+echo ""
+echo -e "${YELLOW}📋 Summary:${NC}"
+echo "✅ ECR logged in to: $ECR_REGISTRY"
+echo "✅ CodeArtifact token generated and exported"
+echo "✅ Environment variables set in: $CODEARTIFACT_ENV_FILE"
+echo ""
+echo -e "${YELLOW}💡 Note:${NC} To use these credentials in a new terminal session, run:"
+echo "source $CODEARTIFACT_ENV_FILE"
+source $CODEARTIFACT_ENV_FILE

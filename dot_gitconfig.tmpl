@@ -1,0 +1,66 @@
+# Git Configuration Base
+# Managed by chezmoi
+
+[user]
+	# Default to work email (most common)
+	name = {{ .name }}
+	email = {{ .email }}
+
+[core]
+	editor = cursor --wait
+	excludesfile = ~/.config/git/ignore
+	autocrlf = input
+	ignorecase = false
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[merge]
+	conflictstyle = diff3
+	tool = cursor
+
+[mergetool "cursor"]
+	cmd = cursor --wait $MERGED
+
+[diff]
+	tool = cursor
+
+[difftool "cursor"]
+	cmd = cursor --wait --diff $LOCAL $REMOTE
+
+[rebase]
+	autoStash = true
+
+[fetch]
+	prune = true
+
+[status]
+	showUntrackedFiles = all
+
+# Corporate URL rewrites
+{{- $corporate_notes := output "bw" "get" "item" "84f330cd-05e9-448f-b6dd-b3ae011a8398" | fromJson -}}
+{{- $corporate_urls := fromIni $corporate_notes.notes -}}
+{{- with $corporate_urls }}
+[url "{{ .GITLAB_URL }}/"]
+	insteadOf = https://git{{ .GITLAB_URL | replace "https://" "." }}/
+{{- else }}
+[url "https://gitlab.company.com/"]
+	insteadOf = https://git.gitlab.company.com/
+{{- end }}
+
+# Conditional configurations based on directory
+# Default: Work email (used everywhere except specific directories below)
+
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.gitconfig-personal
+
+# Future personal directories can be added here when needed
+# [includeIf "gitdir:~/personal-projects/"]
+#	path = ~/.gitconfig-personal

@@ -1,0 +1,24 @@
+# Work Git Configuration
+# Specific overrides for corporate projects
+
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+
+[commit]
+	gpgsign = false  # Adjust based on corporate policy
+
+# Corporate-specific aliases
+[alias]
+	work-init = "!f() { git config user.email '{{ .email }}'; }; f"
+
+# Corporate remotes
+{{- $corporate_notes := output "bw" "get" "item" "84f330cd-05e9-448f-b6dd-b3ae011a8398" | fromJson -}}
+{{- $corporate_urls := fromIni $corporate_notes.notes -}}
+{{- with $corporate_urls }}
+[url "git@{{ .GITLAB_URL | replace "https://" "" }}:"]
+	insteadOf = {{ .GITLAB_URL }}/
+{{- else }}
+[url "git@gitlab.company.com:"]
+	insteadOf = https://gitlab.company.com/
+{{- end }}

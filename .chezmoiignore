@@ -13,8 +13,12 @@ private_*
 .ssh/*.pem
 .ssh/*.key
 
-# Ignore AWS credentials
+# Ignore AWS credentials and config (contains corporate info)
 .aws/credentials
+.aws/config
+
+# Ignore scripts with potential corporate info
+scripts/aws/regenerate-aws-config.sh
 
 # Ignore PGP keys
 .gnupg/*.asc
