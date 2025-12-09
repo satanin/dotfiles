@@ -17,7 +17,6 @@ brew 'git'
 brew 'tmux'
 
 # Security and dotfiles management (safe)
-brew 'bitwarden'
 brew 'bitwarden-cli'
 brew 'chezmoi'
 brew 'gnupg'

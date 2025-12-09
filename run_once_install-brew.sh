@@ -11,7 +11,9 @@ echo "🔧 Script version: 2.1.0 (install-brew)"
 echo "🔍 Debug info:"
 echo "   Operating system: $(uname)"
 echo "   Homebrew available: $(command -v brew &> /dev/null && echo "✅ Yes" || echo "❌ No")"
-echo "   Brewfile exists: $(test -f "$HOME/.dotfiles/Brewfile" && echo "✅ Yes" || echo "❌ No")"
+DOTFILES_DIR="$(chezmoi source-path 2>/dev/null || echo "$HOME/.dotfiles")"
+echo "   Dotfiles directory: $DOTFILES_DIR"
+echo "   Brewfile exists: $(test -f "$DOTFILES_DIR/Brewfile" && echo "✅ Yes" || echo "❌ No")"
 
 # Install Homebrew if not present on macOS
 if [ "$(uname)" = "Darwin" ] && ! which brew > /dev/null 2>&1; then
@@ -28,11 +30,11 @@ if which brew > /dev/null 2>&1; then
 fi
 
 # Check for conflicts before installing
-if [[ -f "$HOME/.dotfiles/check-brew-conflicts.sh" ]]; then
+if [[ -f "$DOTFILES_DIR/check-brew-conflicts.sh" ]]; then
   echo ""
   echo "🔍 Checking for Software Center conflicts..."
 
-  if cd "$HOME/.dotfiles" && ./check-brew-conflicts.sh check; then
+  if cd "$DOTFILES_DIR" && ./check-brew-conflicts.sh check; then
     echo "✅ No conflicts detected, proceeding with installation"
   else
     echo ""
@@ -52,7 +54,7 @@ fi
 # Install packages from Brewfile
 echo ""
 echo "📦 Installing packages from Brewfile..."
-cd "$HOME/.dotfiles" && brew bundle install
+cd "$DOTFILES_DIR" && brew bundle install
 
 echo ""
 echo "🎉 Homebrew setup completed!"
