@@ -67,12 +67,16 @@ is_managed_by_software_center() {
 
 # Main conflict check
 check_conflicts() {
+    # Try to determine dotfiles directory
+    DOTFILES_DIR="$(chezmoi source-path 2>/dev/null || echo "$(pwd)")"
+
     if ! is_corporate_machine; then
         echo "ℹ️  Personal machine detected - no Software Center conflicts possible"
         return 0
     fi
 
     echo "🏢 Corporate machine detected - checking for conflicts..."
+    echo "🔍 Using Brewfile: ${DOTFILES_DIR}/Brewfile"
     echo ""
 
     local found_conflicts=false
@@ -85,13 +89,20 @@ check_conflicts() {
         echo "  Checking $app_name..."
 
         if is_managed_by_software_center "$app_name"; then
-            echo "⚠️  CONFLICT: $app_name is managed by Software Center"
-            echo "   Homebrew package: $brew_name"
-            echo "   Recommendation: Remove from Brewfile or uninstall from Software Center"
-            echo "$brew_name:$app_name" >> "$conflicts_file"
-            found_conflicts=true
+            # Check if this app is actually uncommented in the Brewfile
+            local brewfile_path="${DOTFILES_DIR:-$(pwd)}/Brewfile"
+
+            if [[ -f "$brewfile_path" ]] && grep -q "^[[:space:]]*cask[[:space:]]*'$brew_name'" "$brewfile_path"; then
+                echo "⚠️  CONFLICT: $app_name is managed by Software Center BUT also uncommented in Brewfile"
+                echo "   Homebrew package: $brew_name"
+                echo "   Action needed: Comment out 'cask \"$brew_name\"' in Brewfile"
+                echo "$brew_name:$app_name" >> "$conflicts_file"
+                found_conflicts=true
+            else
+                echo "ℹ️  $app_name is managed by Software Center (correctly excluded from Brewfile)"
+            fi
         else
-            echo "✅ $app_name - No conflict detected"
+            echo "✅ $app_name - Available for Homebrew installation"
         fi
     done < <(get_potential_conflicts)
 
