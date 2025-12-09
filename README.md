@@ -15,10 +15,12 @@ Modern dotfiles management with [chezmoi](https://chezmoi.io) and [Bitwarden](ht
 
 ## Quick Setup (New Machine)
 
-### Step 1: Install chezmoi and initialize dotfiles
+### Step 1: Install chezmoi and download dotfiles
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/satanin/dotfiles.git
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init https://github.com/satanin/dotfiles.git
 ```
+
+**Important**: This only downloads the configuration files. Don't run `chezmoi apply` yet.
 
 ### Step 2: Install Bitwarden CLI
 ```bash
@@ -41,7 +43,11 @@ This will install all packages and setup everything:
 chezmoi apply
 ```
 
-**Note**: During the first run, you'll be prompted to enter your personal information (name, email, GitHub username) to configure git and other tools properly.
+**What happens during apply**:
+- You'll be prompted to enter your personal information (name, email, GitHub username)
+- Homebrew packages will be installed automatically
+- SSH/PGP keys will be restored from Bitwarden (if any)
+- All configuration files will be set up with your personal data
 
 ## Alternative: Manual Setup
 

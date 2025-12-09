@@ -1,4 +1,4 @@
-{{- if lookPath "bw" }}
+{{- if and (lookPath "bw") (env "BW_SESSION") }}
 {{- $aws_notes := output "bw" "get" "item" "5d221153-c9e6-4407-8cb6-b3ae01192955" | fromJson -}}
 {{- $aws_config := fromIni $aws_notes.notes -}}
 {

@@ -13,7 +13,7 @@
 	work-init = "!f() { git config user.email '{{ .email }}'; }; f"
 
 # Corporate remotes
-{{- if lookPath "bw" }}
+{{- if and (lookPath "bw") (env "BW_SESSION") }}
 {{- $corporate_notes := output "bw" "get" "item" "84f330cd-05e9-448f-b6dd-b3ae011a8398" | fromJson -}}
 {{- $corporate_urls := fromIni $corporate_notes.notes -}}
 {{- with $corporate_urls }}
@@ -24,7 +24,7 @@
 	insteadOf = https://gitlab.company.com/
 {{- end }}
 {{- else }}
-# Bitwarden CLI not available, using fallback values
+# Bitwarden CLI not available or session not set, using fallback values
 [url "git@gitlab.company.com:"]
 	insteadOf = https://gitlab.company.com/
 {{- end }}
