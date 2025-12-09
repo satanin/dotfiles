@@ -44,7 +44,7 @@ fi
 # Install packages from Brewfile
 echo ""
 echo "📦 Installing packages from Brewfile..."
-cd "$HOME" && brew bundle install
+cd "$HOME/.dotfiles" && brew bundle install
 
 echo ""
 echo "🎉 Homebrew setup completed!"
