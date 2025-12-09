@@ -37,7 +37,13 @@ bw login
 export BW_SESSION=$(bw unlock --raw)
 ```
 
-### Step 5: Apply configuration
+### Step 5: Update dotfiles (if repository changed)
+If you've made updates to the repository after initial setup:
+```bash
+chezmoi update
+```
+
+### Step 6: Apply configuration
 This will install all packages and setup everything:
 ```bash
 chezmoi apply
@@ -380,6 +386,15 @@ chezmoi init --force
 Debug template rendering:
 ```bash
 chezmoi execute-template '{{ bitwarden "item-name" }}'
+```
+
+Interactive prompt stuck (file changed since last write):
+```bash
+# Force apply without interactive prompts
+chezmoi apply --force
+
+# Or resolve conflicts manually
+chezmoi merge ~/.zshrc
 ```
 
 ## Customization
