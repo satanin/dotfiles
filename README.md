@@ -17,7 +17,7 @@ Modern dotfiles management with [chezmoi](https://chezmoi.io) and [Bitwarden](ht
 
 ```bash
 # 1. Download and run bootstrap script
-curl -fsSL https://raw.githubusercontent.com/yourusername/dotfiles/master/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/satanin/dotfiles/master/bootstrap.sh | bash
 
 # 2. Login to Bitwarden and apply configuration
 bw login
@@ -31,11 +31,29 @@ chezmoi apply
 - macOS
 - Homebrew (will be installed automatically)
 
-### Installation
+### One-Line Installation
+```bash
+# Install chezmoi and initialize dotfiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/satanin/dotfiles.git
+```
+
+### Alternative: Step by Step with Chezmoi
+```bash
+# Install chezmoi
+sh -c "$(curl -fsLS get.chezmoi.io)"
+
+# Initialize dotfiles
+chezmoi init https://github.com/satanin/dotfiles.git
+
+# Apply configuration
+chezmoi apply
+```
+
+### Step-by-Step Installation
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+   git clone https://github.com/satanin/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
    ```
 

@@ -23,7 +23,7 @@ El archivo `~/.aws/config` **contiene información corporativa específica** y p
 
 ### **1. Clonar dotfiles**
 ```bash
-chezmoi init https://github.com/tu-usuario/dotfiles.git
+chezmoi init https://github.com/satanin/dotfiles.git
 ```
 
 ### **2. Configurar Bitwarden**
