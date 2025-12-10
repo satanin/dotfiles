@@ -26,7 +26,7 @@ mkdir -p ~/.aws
 
 # Get AWS configuration from Bitwarden
 AWS_CONFIG=$(bw get item "5d221153-c9e6-4407-8cb6-b3ae01192955" ${BW_SESSION:+--session "$BW_SESSION"} | jq -r '.notes')
-
+echo "AWS_CONFIG: $AWS_CONFIG"
 # Parse configuration values (handling quoted values)
 ECR_REGISTRY=$(echo "$AWS_CONFIG" | grep 'ECR_REGISTRY=' | cut -d'=' -f2- | sed 's/^"//;s/"$//')
 ECR_PROFILE=$(echo "$AWS_CONFIG" | grep 'ECR_PROFILE=' | cut -d'=' -f2- | sed 's/^"//;s/"$//')
@@ -36,6 +36,7 @@ CODEARTIFACT_PROFILE=$(echo "$AWS_CONFIG" | grep 'CODEARTIFACT_PROFILE=' | cut -
 SSO_START_URL=$(echo "$AWS_CONFIG" | grep 'SSO_START_URL=' | cut -d'=' -f2- | sed 's/^"//;s/"$//')
 
 echo "🔍 Parsed values:"
+
 echo "  ECR_REGISTRY: $ECR_REGISTRY"
 echo "  ECR_PROFILE: $ECR_PROFILE"
 echo "  SSO_START_URL: $SSO_START_URL"
@@ -50,12 +51,6 @@ output         = json
 ########################
 # CORPORATE ORGANIZATION #
 ########################
-
-# Parse AWS Account IDs from Bitwarden (these should also be in Bitwarden)
-# For now using placeholder - TODO: move these to Bitwarden as well
-DEV_ACCOUNT_ID="PLACEHOLDER_DEV_ACCOUNT"
-PROD_ACCOUNT_ID="PLACEHOLDER_PROD_ACCOUNT"
-AI_ACCOUNT_ID="PLACEHOLDER_AI_ACCOUNT"
 
 [profile $ECR_PROFILE]
 sso_start_url  = $SSO_START_URL

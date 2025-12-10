@@ -48,7 +48,7 @@ if [[ ! -f ~/aws-login.sh ]]; then
 fi
 
 # Add sourcing of CodeArtifact env to shell profiles if not already there
-CODEARTIFACT_SOURCE="# Source CodeArtifact environment variables if available
+CODEARTIFACT_SOURCE="
 if [[ -f ~/.codeartifact_env ]]; then
     source ~/.codeartifact_env
 fi"
